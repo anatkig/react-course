@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ProgressProvider } from './context/ProgressContext';
 import { Sidebar } from './components/Sidebar';
 import { RandomQuestion } from './components/RandomQuestion';
@@ -14,7 +14,7 @@ export default function App() {
   const [showRandom, setShowRandom] = useState(false);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ProgressProvider>
         <div className="app-layout">
           <Sidebar onRandomQuestion={() => setShowRandom(true)} />
@@ -31,6 +31,6 @@ export default function App() {
           </main>
         </div>
       </ProgressProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
