@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useProgress } from '../context/ProgressContext';
 import { course } from '../data';
 
@@ -13,10 +14,18 @@ function getLevel(percent: number): string {
 interface SidebarProps {
   onRandomQuestion?: () => void;
   onQuickLine?: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export function Sidebar({ onRandomQuestion, onQuickLine }: SidebarProps) {
+export function Sidebar({ onRandomQuestion, onQuickLine, isOpen, onClose }: SidebarProps) {
   const { progress } = useProgress();
+  const location = useLocation();
+
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    if (isOpen && onClose) onClose();
+  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getModuleProgress = (moduleId: string) => {
     const mod = course.modules.find(m => m.id === moduleId);
@@ -26,9 +35,12 @@ export function Sidebar({ onRandomQuestion, onQuickLine }: SidebarProps) {
   };
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar${isOpen ? ' open' : ''}`}>
       <div className="sidebar-header">
         <h2>⚛️ {course.title}</h2>
+        {onClose && (
+          <button className="sidebar-close" onClick={onClose} aria-label="Close menu">✕</button>
+        )}
       </div>
 
       <nav className="sidebar-nav">
