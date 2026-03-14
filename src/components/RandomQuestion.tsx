@@ -25,17 +25,28 @@ export function RandomQuestion({ onClose }: Props) {
   const [question, setQuestion] = useState<QuizQuestion>(pickRandom);
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
+  const [streak, setStreak] = useState(0);
+  const [showStreakEnd, setShowStreakEnd] = useState(false);
+  const [endedStreak, setEndedStreak] = useState(0);
 
   const next = useCallback(() => {
     setQuestion(pickRandom());
     setSelected(null);
     setRevealed(false);
+    setShowStreakEnd(false);
   }, []);
 
   const handleSelect = (idx: number) => {
     if (revealed) return;
     setSelected(idx);
     setRevealed(true);
+    if (idx === question.correctAnswer) {
+      setStreak(s => s + 1);
+    } else {
+      setEndedStreak(streak);
+      setShowStreakEnd(true);
+      setStreak(0);
+    }
   };
 
   return (
@@ -43,29 +54,44 @@ export function RandomQuestion({ onClose }: Props) {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>✕</button>
         <h3 className="rq-question">{question.question}</h3>
-        <div className="rq-options">
-          {question.options.map((opt, i) => {
-            let cls = 'option';
-            if (selected === i) cls += ' selected';
-            if (revealed) {
-              if (i === question.correctAnswer) cls += ' correct';
-              else if (selected === i) cls += ' incorrect';
-            }
-            return (
-              <button key={i} className={cls} onClick={() => handleSelect(i)}>
-                {opt}
-              </button>
-            );
-          })}
-        </div>
-        {revealed && (
-          <p className="rq-explanation">{question.explanation}</p>
+        {!showStreakEnd && (
+          <>
+            <div className="rq-options">
+              {question.options.map((opt, i) => {
+                let cls = 'option';
+                if (selected === i) cls += ' selected';
+                if (revealed) {
+                  if (i === question.correctAnswer) cls += ' correct';
+                  else if (selected === i) cls += ' incorrect';
+                }
+                return (
+                  <button key={i} className={cls} onClick={() => handleSelect(i)}>
+                    {opt}
+                  </button>
+                );
+              })}
+            </div>
+            {revealed && selected === question.correctAnswer && (
+              <p className="rq-explanation">{question.explanation}</p>
+            )}
+            {revealed && selected === question.correctAnswer && (
+              <div className="rq-actions">
+                <span className="rq-streak">🔥 Streak: {streak}</span>
+                <button className="btn btn-primary" onClick={next}>
+                  Next Random Question →
+                </button>
+              </div>
+            )}
+          </>
         )}
-        <div className="rq-actions">
-          <button className="btn btn-primary" onClick={next}>
-            Next Random Question →
-          </button>
-        </div>
+        {showStreakEnd && (
+          <div className="rq-streak-end">
+            <p>OK. This one is incorrect. However, that was <strong>{endedStreak}</strong> correct answer{endedStreak !== 1 ? 's' : ''} in a row. Congrats!</p>
+            <button className="btn btn-primary" onClick={next}>
+              Continue →
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

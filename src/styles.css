@@ -940,4 +940,22 @@ hr {
 .rq-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.rq-streak {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.rq-streak-end {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.rq-streak-end p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
