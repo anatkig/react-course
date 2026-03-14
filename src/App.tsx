@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ProgressProvider } from './context/ProgressContext';
 import { Sidebar } from './components/Sidebar';
 import { RandomQuestion } from './components/RandomQuestion';
+import { QuickLine } from './components/QuickLine';
 import { Dashboard } from './pages/Dashboard';
 import { LevelTest } from './pages/LevelTest';
 import { ModulePage } from './pages/ModulePage';
@@ -12,13 +13,15 @@ import './styles.css';
 
 export default function App() {
   const [showRandom, setShowRandom] = useState(false);
+  const [showQuickLine, setShowQuickLine] = useState(false);
 
   return (
     <HashRouter>
       <ProgressProvider>
         <div className="app-layout">
-          <Sidebar onRandomQuestion={() => setShowRandom(true)} />
+          <Sidebar onRandomQuestion={() => setShowRandom(true)} onQuickLine={() => setShowQuickLine(true)} />
           {showRandom && <RandomQuestion onClose={() => setShowRandom(false)} />}
+          {showQuickLine && <QuickLine onClose={() => setShowQuickLine(false)} />}
           <main className="main-content">
             <Routes>
               <Route path="/" element={<Dashboard />} />

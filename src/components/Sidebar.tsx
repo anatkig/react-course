@@ -12,9 +12,10 @@ function getLevel(percent: number): string {
 
 interface SidebarProps {
   onRandomQuestion?: () => void;
+  onQuickLine?: () => void;
 }
 
-export function Sidebar({ onRandomQuestion }: SidebarProps) {
+export function Sidebar({ onRandomQuestion, onQuickLine }: SidebarProps) {
   const { progress } = useProgress();
 
   const getModuleProgress = (moduleId: string) => {
@@ -45,6 +46,12 @@ export function Sidebar({ onRandomQuestion }: SidebarProps) {
         {onRandomQuestion && (
           <button className="nav-item random-q-btn" onClick={onRandomQuestion}>
             🎲 Random Question
+          </button>
+        )}
+
+        {onQuickLine && (
+          <button className="nav-item quick-line-btn" onClick={onQuickLine}>
+            ⚡ Quick Line
           </button>
         )}
 
