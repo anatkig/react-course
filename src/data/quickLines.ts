@@ -421,4 +421,281 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     answer: 'const total = items.reduce((sum, item) => sum + item.price, 0);',
     hint: 'Use reduce() to sum up values. Don\'t store derived data in state.',
   },
+  // --- Module 9: Security ---
+  {
+    id: 'ql-31',
+    prompt: 'Sanitize userInput before using it in dangerouslySetInnerHTML.',
+    codeBefore: [
+      'import DOMPurify from "dompurify";',
+      'function RichContent({ userInput }) {',
+    ],
+    codeAfter: [
+      '  return <div dangerouslySetInnerHTML={{ __html: clean }} />;',
+      '}',
+    ],
+    answer: 'const clean = DOMPurify.sanitize(userInput);',
+    hint: 'Use DOMPurify.sanitize() to strip malicious scripts from HTML content.',
+  },
+  {
+    id: 'ql-32',
+    prompt: 'Set the Authorization header with the Bearer token for a fetch request.',
+    codeBefore: [
+      'const fetchData = async (token) => {',
+      '  const res = await fetch("/api/data", {',
+    ],
+    codeAfter: [
+      '  });',
+      '  return res.json();',
+      '};',
+    ],
+    answer: 'headers: { Authorization: `Bearer ${token}` },',
+    hint: 'Set headers with the Authorization key and `Bearer ${token}` value.',
+  },
+  // --- Module 10: React Tricks ---
+  {
+    id: 'ql-33',
+    prompt: 'Use a key to force React to remount the component when userId changes.',
+    codeBefore: [
+      'function UserPage({ userId }) {',
+      '  return (',
+    ],
+    codeAfter: [
+      '  );',
+      '}',
+    ],
+    answer: '<UserProfile key={userId} userId={userId} />',
+    hint: 'Changing the key prop forces React to unmount and remount with fresh state.',
+  },
+  {
+    id: 'ql-34',
+    prompt: 'Forward the ref to the inner input element.',
+    codeBefore: [
+      'const FancyInput = forwardRef((props, ref) => {',
+      '  return (',
+    ],
+    codeAfter: [
+      '  );',
+      '});',
+    ],
+    answer: '<input ref={ref} {...props} />',
+    hint: 'Pass the ref received from forwardRef directly to the inner DOM element.',
+  },
+  // --- Module 11: React Traps ---
+  {
+    id: 'ql-35',
+    prompt: 'Fix: use functional update to avoid stale closure in the interval.',
+    codeBefore: [
+      'useEffect(() => {',
+      '  const id = setInterval(() => {',
+    ],
+    codeAfter: [
+      '  }, 1000);',
+      '  return () => clearInterval(id);',
+      '}, []);',
+    ],
+    answer: 'setCount(prev => prev + 1);',
+    hint: 'Use a function updater to get the latest value instead of a stale closure reference.',
+  },
+  {
+    id: 'ql-36',
+    prompt: 'Fix: update nested object immutably (update city inside address).',
+    codeBefore: [
+      'const updateCity = (newCity) => {',
+    ],
+    codeAfter: [
+      '};',
+    ],
+    answer: 'setUser(prev => ({ ...prev, address: { ...prev.address, city: newCity } }));',
+    hint: 'Spread each level of nesting: { ...prev, nested: { ...prev.nested, key: value } }.',
+  },
+  // --- Module 12: Custom Hooks ---
+  {
+    id: 'ql-37',
+    prompt: 'Return the debounced value after a delay using a custom hook pattern.',
+    codeBefore: [
+      'function useDebounce(value, delay) {',
+      '  const [debounced, setDebounced] = useState(value);',
+      '  useEffect(() => {',
+      '    const timer = setTimeout(() => setDebounced(value), delay);',
+      '    return () => clearTimeout(timer);',
+      '  }, [value, delay]);',
+    ],
+    codeAfter: [
+      '}',
+    ],
+    answer: 'return debounced;',
+    hint: 'A custom hook returns its computed value at the end.',
+  },
+  {
+    id: 'ql-38',
+    prompt: 'Initialize state from localStorage in a useLocalStorage hook.',
+    codeBefore: [
+      'function useLocalStorage(key, initial) {',
+    ],
+    codeAfter: [
+      '  // ... sync logic',
+      '  return [value, setValue];',
+      '}',
+    ],
+    answer: 'const [value, setValue] = useState(() => JSON.parse(localStorage.getItem(key)) ?? initial);',
+    hint: 'Use a lazy initializer to read from localStorage and fall back to the initial value.',
+  },
+  // --- Module 13: TypeScript ---
+  {
+    id: 'ql-39',
+    prompt: 'Type the children prop to accept any renderable React content.',
+    codeBefore: [
+      'interface LayoutProps {',
+    ],
+    codeAfter: [
+      '}',
+    ],
+    answer: 'children: React.ReactNode;',
+    hint: 'React.ReactNode covers elements, strings, numbers, null, fragments, and more.',
+  },
+  {
+    id: 'ql-40',
+    prompt: 'Type a generic List component that accepts items of type T.',
+    codeBefore: [],
+    codeAfter: [
+      '  return <ul>{items.map(renderItem)}</ul>;',
+      '}',
+    ],
+    answer: 'function List<T>({ items, renderItem }: { items: T[]; renderItem: (item: T) => React.ReactNode }) {',
+    hint: 'Use function Name<T>({ prop }: { prop: T[] }) { for a generic component.',
+  },
+  // --- Module 14: Forms ---
+  {
+    id: 'ql-41',
+    prompt: 'Handle multiple form inputs with a single onChange using computed property names.',
+    codeBefore: [
+      'const handleChange = (e) => {',
+    ],
+    codeAfter: [
+      '};',
+    ],
+    answer: 'setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));',
+    hint: 'Use [e.target.name] as a computed key to update the right field.',
+  },
+  {
+    id: 'ql-42',
+    prompt: 'Add a new empty field to a dynamic form fields array.',
+    codeBefore: [
+      'const addField = () => {',
+    ],
+    codeAfter: [
+      '};',
+    ],
+    answer: 'setFields(prev => [...prev, ""]);',
+    hint: 'Spread the existing array and append a new empty string.',
+  },
+  // --- Module 15: API Integration ---
+  {
+    id: 'ql-43',
+    prompt: 'Create an AbortController and pass its signal to fetch.',
+    codeBefore: [
+      'useEffect(() => {',
+    ],
+    codeAfter: [
+      '  fetch("/api/data", { signal: controller.signal }).then(r => r.json()).then(setData);',
+      '  return () => controller.abort();',
+      '}, []);',
+    ],
+    answer: 'const controller = new AbortController();',
+    hint: 'new AbortController() creates a controller whose signal can cancel fetch requests.',
+  },
+  {
+    id: 'ql-44',
+    prompt: 'Implement optimistic update: update state before the API call.',
+    codeBefore: [
+      'const toggleLike = async (postId) => {',
+      '  const prev = posts;',
+    ],
+    codeAfter: [
+      '  try { await api.toggleLike(postId); }',
+      '  catch { setPosts(prev); }',
+      '};',
+    ],
+    answer: 'setPosts(posts.map(p => p.id === postId ? { ...p, liked: !p.liked } : p));',
+    hint: 'Update the target item optimistically with map(), save previous state for rollback.',
+  },
+  // --- Module 16: Testing ---
+  {
+    id: 'ql-45',
+    prompt: 'Query a button by its accessible role and name in a test.',
+    codeBefore: [
+      'render(<SubmitForm />);',
+    ],
+    codeAfter: [
+      'expect(button).toBeInTheDocument();',
+    ],
+    answer: 'const button = screen.getByRole("button", { name: /submit/i });',
+    hint: 'getByRole("button", { name: /text/i }) finds a button by its accessible name.',
+  },
+  {
+    id: 'ql-46',
+    prompt: 'Simulate a user clicking a button in a test.',
+    codeBefore: [
+      'render(<Counter />);',
+      'const button = screen.getByRole("button", { name: /increment/i });',
+    ],
+    codeAfter: [
+      'expect(screen.getByText("1")).toBeInTheDocument();',
+    ],
+    answer: 'await userEvent.click(button);',
+    hint: 'userEvent.click(element) simulates a real user click interaction.',
+  },
+  // --- Module 17: Accessibility ---
+  {
+    id: 'ql-47',
+    prompt: 'Add an aria-label to an icon button that has no visible text.',
+    codeBefore: [
+      'function CloseButton({ onClose }) {',
+      '  return (',
+    ],
+    codeAfter: [
+      '  );',
+      '}',
+    ],
+    answer: '<button onClick={onClose} aria-label="Close">✕</button>',
+    hint: 'aria-label provides an accessible name when there is no visible label text.',
+  },
+  {
+    id: 'ql-48',
+    prompt: 'Associate a label with its input using htmlFor.',
+    codeBefore: [],
+    codeAfter: [
+      '<input id="email" type="email" />',
+    ],
+    answer: '<label htmlFor="email">Email</label>',
+    hint: 'Set htmlFor on the label to match the input\'s id attribute.',
+  },
+  // --- Module 18: Ecosystem & Tooling ---
+  {
+    id: 'ql-49',
+    prompt: 'Configure Vite to set the base path for GitHub Pages deployment.',
+    codeBefore: [
+      'export default defineConfig({',
+    ],
+    codeAfter: [
+      '  plugins: [react()],',
+      '});',
+    ],
+    answer: 'base: "/my-app/",',
+    hint: 'Set the base property in vite.config to match your GitHub Pages repository name.',
+  },
+  {
+    id: 'ql-50',
+    prompt: 'Write an ESLint rule to warn on console.log statements.',
+    codeBefore: [
+      'module.exports = {',
+      '  rules: {',
+    ],
+    codeAfter: [
+      '  },',
+      '};',
+    ],
+    answer: '"no-console": "warn",',
+    hint: 'Use the "no-console" rule with "warn" severity level.',
+  },
 ];

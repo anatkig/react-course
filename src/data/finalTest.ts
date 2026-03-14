@@ -126,4 +126,134 @@ export const finalTest: QuizQuestion[] = [
     explanation:
       'Route-based code splitting is the most impactful and natural place to split your code. Each page is loaded only when the user navigates to it.',
   },
+  // --- Module 9: Security ---
+  {
+    id: 'ft-16',
+    question: 'Which React feature provides built-in XSS protection?',
+    options: ['React.memo prevents injection by memoizing component output', 'JSX automatically escapes embedded values before rendering to the DOM', 'useEffect sanitizes all state values before they reach the browser', 'React Router validates all URL parameters against an allowlist'],
+    correctAnswer: 1,
+    explanation:
+      'React\'s JSX automatically escapes embedded expressions, converting special characters to HTML entities and preventing XSS injection by default.',
+  },
+  {
+    id: 'ft-17',
+    question: 'Why should you avoid storing JWT tokens in localStorage?',
+    options: ['localStorage has a strict 1KB size limit that tokens may exceed', 'localStorage is accessible via JavaScript, making tokens vulnerable to XSS attacks', 'localStorage data is sent with every HTTP request adding unnecessary bandwidth', 'localStorage is not supported in modern browsers for security reasons'],
+    correctAnswer: 1,
+    explanation:
+      'localStorage is accessible to any JavaScript on the page. If an XSS vulnerability exists, attackers can steal tokens. httpOnly cookies are safer.',
+  },
+  // --- Module 10: React Tricks ---
+  {
+    id: 'ft-18',
+    question: 'How can you force React to fully reset a component\'s state?',
+    options: ['Call setState(undefined) to clear all state back to initial values', 'Use useEffect with an empty dependency array to reset on mount', 'Change the component\'s key prop to a different value', 'Call forceUpdate() to trigger a complete state reset'],
+    correctAnswer: 2,
+    explanation:
+      'Changing a component\'s key makes React treat it as a new element — it unmounts the old instance and mounts a fresh one with initial state.',
+  },
+  // --- Module 11: React Traps ---
+  {
+    id: 'ft-19',
+    question: 'What causes a stale closure bug in React?',
+    options: ['Using async/await inside a useEffect callback function', 'A callback captures a variable from a previous render and never sees the update', 'Declaring multiple useState hooks in the same component', 'Passing a function as a prop to a child component'],
+    correctAnswer: 1,
+    explanation:
+      'Stale closures happen when a function captures a variable from a previous render. The function continues to see the old value even after state updates.',
+  },
+  {
+    id: 'ft-20',
+    question: 'Which pattern avoids stale closure issues when using setState?',
+    options: ['Always destructure state at the top of the component', 'Use the functional updater form: setState(prev => prev + 1)', 'Wrap the state update in a setTimeout to ensure freshness', 'Store the value in localStorage and read it back each time'],
+    correctAnswer: 1,
+    explanation:
+      'The functional updater receives the latest state value as its argument, avoiding dependency on a potentially stale closure variable.',
+  },
+  // --- Module 12: Custom Hooks ---
+  {
+    id: 'ft-21',
+    question: 'What is the key benefit of extracting logic into custom hooks?',
+    options: ['Custom hooks share the same state instance across all calling components', 'They allow reusing stateful logic without duplicating code or changing component hierarchy', 'They automatically optimize performance by memoizing all return values', 'They bypass the rules of hooks, allowing conditional hook calls inside them'],
+    correctAnswer: 1,
+    explanation:
+      'Custom hooks encapsulate reusable stateful logic. Each component calling the hook gets its own independent copy of the state.',
+  },
+  // --- Module 13: TypeScript ---
+  {
+    id: 'ft-22',
+    question: 'What is React.ReactNode used for in TypeScript?',
+    options: ['Typing the return value of a DOM query selector function', 'Representing any renderable content: elements, strings, numbers, null, fragments', 'Defining the shape of context values passed through the component tree', 'Typing CSS module imports to ensure class names are valid strings'],
+    correctAnswer: 1,
+    explanation:
+      'React.ReactNode is the broadest type for renderable content — it includes JSX elements, strings, numbers, booleans, null, undefined, and fragments.',
+  },
+  {
+    id: 'ft-23',
+    question: 'How do you correctly type a component that accepts an onChange handler for an input?',
+    options: ['onChange: (value: string) => void', 'onChange: React.ChangeEvent<HTMLInputElement>', 'onChange: (e: React.ChangeEvent<HTMLInputElement>) => void', 'onChange: EventHandler'],
+    correctAnswer: 2,
+    explanation:
+      'The onChange prop should be typed as a function that receives a React.ChangeEvent<HTMLInputElement> parameter.',
+  },
+  // --- Module 14: Forms ---
+  {
+    id: 'ft-24',
+    question: 'What is the best approach for validating complex forms in React?',
+    options: ['Use alert() to show validation errors after form submission', 'Validate only on the server and disable the submit button until response', 'Use a schema validation library (e.g., Zod) combined with real-time field validation', 'Check each field individually with nested if-else statements in the submit handler'],
+    correctAnswer: 2,
+    explanation:
+      'Schema validation libraries provide declarative, reusable, and composable validation rules with TypeScript type inference.',
+  },
+  // --- Module 15: API Integration ---
+  {
+    id: 'ft-25',
+    question: 'What is an optimistic update and when should you use it?',
+    options: ['Updating the cache before making the request — never recommended in production', 'Showing a loading spinner optimized for fast connections', 'Updating the UI immediately and rolling back on failure — for perceived responsiveness', 'Pre-fetching all possible API responses on application startup'],
+    correctAnswer: 2,
+    explanation:
+      'Optimistic updates immediately reflect changes in the UI before server confirmation, improving perceived responsiveness. They roll back if the server rejects the change.',
+  },
+  // --- Module 16: Testing ---
+  {
+    id: 'ft-26',
+    question: 'What is the core philosophy of React Testing Library?',
+    options: ['Test implementation details like state values and lifecycle methods', 'Test components the way users interact with them — by accessible roles and text', 'Maximize code coverage by testing every internal function individually', 'Snapshot test every component to detect any visual change automatically'],
+    correctAnswer: 1,
+    explanation:
+      'React Testing Library focuses on testing behavior from the user\'s perspective — querying by role, text, and label rather than implementation details.',
+  },
+  {
+    id: 'ft-27',
+    question: 'Why should you avoid testing implementation details?',
+    options: ['Implementation detail tests are slower than behavioral tests', 'They create fragile tests that break on refactors even when behavior is unchanged', 'The testing library does not support querying internal state', 'Implementation details are automatically tested by the TypeScript compiler'],
+    correctAnswer: 1,
+    explanation:
+      'Testing implementation details (state values, internal methods) creates brittle tests that break on refactoring without actual behavior changes.',
+  },
+  // --- Module 17: Accessibility ---
+  {
+    id: 'ft-28',
+    question: 'Why should you prefer <button> over <div onClick={...}> for clickable elements?',
+    options: ['Buttons render faster than divs with click handlers attached', 'Buttons have built-in keyboard accessibility, focus management, and semantic role', 'Divs cannot receive onClick handlers according to the HTML specification', 'There is no difference — they are functionally and semantically identical'],
+    correctAnswer: 1,
+    explanation:
+      'Native <button> elements are keyboard accessible (Enter/Space), focusable, and have an implicit role. A div with onClick lacks all of these by default.',
+  },
+  {
+    id: 'ft-29',
+    question: 'What should you use to label a form input for screen readers?',
+    options: ['A placeholder attribute is sufficient for screen reader accessibility', 'A <label> element with htmlFor matching the input\'s id, or aria-label', 'A <span> element placed visually next to the input field', 'A title attribute on the input element provides full accessibility'],
+    correctAnswer: 1,
+    explanation:
+      'A <label> with htmlFor (or wrapping the input) provides an accessible name. aria-label or aria-labelledby are alternatives when a visible label isn\'t possible.',
+  },
+  // --- Module 18: Ecosystem & Tooling ---
+  {
+    id: 'ft-30',
+    question: 'What is the main benefit of using ESLint in a React project?',
+    options: ['It bundles JavaScript files for production deployment', 'It automatically formats code with consistent spacing and indentation', 'It catches potential bugs, enforces coding standards, and prevents anti-patterns', 'It compiles TypeScript to JavaScript before the build step'],
+    correctAnswer: 2,
+    explanation:
+      'ESLint statically analyzes code to find problems, enforce consistent style, and prevent common React anti-patterns like missing hook dependencies.',
+  },
 ];
