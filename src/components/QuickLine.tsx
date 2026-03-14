@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { quickLineChallenges, type QuickLineChallenge } from '../data/quickLines';
+import { useProgress } from '../context/ProgressContext';
 
 function pickRandom(): QuickLineChallenge {
   return quickLineChallenges[Math.floor(Math.random() * quickLineChallenges.length)];
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export function QuickLine({ onClose }: Props) {
+  const { dispatch } = useProgress();
   const [challenge, setChallenge] = useState<QuickLineChallenge>(pickRandom);
   const [answer, setAnswer] = useState('');
   const [result, setResult] = useState<'correct' | 'incorrect' | null>(null);
@@ -32,12 +34,15 @@ export function QuickLine({ onClose }: Props) {
     if (!trimmed) return;
     if (trimmed === challenge.answer.trim()) {
       setResult('correct');
-      setStreak(s => s + 1);
+      const newStreak = streak + 1;
+      setStreak(newStreak);
+      dispatch({ type: 'RECORD_QUICK_LINE', payload: { correct: true, streak: newStreak } });
     } else {
       setResult('incorrect');
       setEndedStreak(streak);
       setShowStreakEnd(true);
       setStreak(0);
+      dispatch({ type: 'RECORD_QUICK_LINE', payload: { correct: false, streak: 0 } });
     }
   };
 

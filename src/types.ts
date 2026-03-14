@@ -47,9 +47,17 @@ export interface TestResult {
   answers: Record<string, number>;
 }
 
+export interface ActivityStats {
+  attempts: number;
+  correct: number;
+  bestStreak: number;
+}
+
 export interface UserProgress {
   levelTestResult: TestResult | null;
   topicProgress: Record<string, TopicProgress>;
   moduleTestResults: Record<string, TestResult>;
   finalTestResult: TestResult | null;
+  randomQuestionStats: ActivityStats;
+  quickLineStats: ActivityStats;
 }

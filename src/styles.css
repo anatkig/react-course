@@ -169,6 +169,43 @@ a:hover {
   margin-top: 4px;
 }
 
+/* Activity stat cards */
+.activity-card {
+  position: relative;
+}
+
+.activity-icon {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+
+.activity-card .stat-value {
+  font-size: 1.5rem;
+}
+
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.activity-detail {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.activity-detail.muted {
+  font-style: italic;
+}
+
+.level-card .stat-value {
+  font-size: 1.2rem;
+}
+
 .progress-bar {
   height: 6px;
   background: var(--border);

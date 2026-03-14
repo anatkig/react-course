@@ -11,6 +11,22 @@ export function Dashboard() {
 
   const completedModuleTests = Object.values(progress.moduleTestResults).filter(r => r.passed).length;
 
+  const rqStats = progress.randomQuestionStats ?? { attempts: 0, correct: 0, bestStreak: 0 };
+  const qlStats = progress.quickLineStats ?? { attempts: 0, correct: 0, bestStreak: 0 };
+  const rqPercent = rqStats.attempts > 0 ? Math.round((rqStats.correct / rqStats.attempts) * 100) : 0;
+  const qlPercent = qlStats.attempts > 0 ? Math.round((qlStats.correct / qlStats.attempts) * 100) : 0;
+
+  const levelResult = progress.levelTestResult;
+  const levelPercent = levelResult ? Math.round((levelResult.score / levelResult.total) * 100) : 0;
+
+  function getLevel(percent: number): string {
+    if (percent >= 90) return 'Highly Proficient';
+    if (percent >= 75) return 'Proficient';
+    if (percent >= 55) return 'Advanced';
+    if (percent >= 35) return 'Intermediate';
+    return 'Beginner';
+  }
+
   return (
     <div className="page dashboard">
       <h1>{course.title}</h1>
@@ -35,6 +51,43 @@ export function Dashboard() {
         <div className="stat-card">
           <div className="stat-value">{progress.finalTestResult ? `${progress.finalTestResult.score}/${progress.finalTestResult.total}` : '—'}</div>
           <div className="stat-label">Final Test</div>
+        </div>
+      </div>
+
+      {/* Activity Stats Section */}
+      <h2>Activity Stats</h2>
+      <div className="stats-grid">
+        {levelResult && (
+          <div className="stat-card activity-card level-card">
+            <div className="activity-icon">📋</div>
+            <div className="stat-value">{getLevel(levelPercent)}</div>
+            <div className="stat-label">Level Test Result</div>
+            <div className="activity-detail">{levelResult.score}/{levelResult.total} ({levelPercent}%)</div>
+          </div>
+        )}
+        <div className="stat-card activity-card rq-card">
+          <div className="activity-icon">🎲</div>
+          <div className="stat-value">{rqStats.attempts > 0 ? `${rqPercent}%` : '—'}</div>
+          <div className="stat-label">Random Questions</div>
+          {rqStats.attempts > 0 && (
+            <div className="activity-details">
+              <span>{rqStats.correct}/{rqStats.attempts} correct</span>
+              <span>🔥 Best streak: {rqStats.bestStreak}</span>
+            </div>
+          )}
+          {rqStats.attempts === 0 && <div className="activity-detail muted">No attempts yet</div>}
+        </div>
+        <div className="stat-card activity-card ql-card">
+          <div className="activity-icon">⚡</div>
+          <div className="stat-value">{qlStats.attempts > 0 ? `${qlPercent}%` : '—'}</div>
+          <div className="stat-label">Quick Lines</div>
+          {qlStats.attempts > 0 && (
+            <div className="activity-details">
+              <span>{qlStats.correct}/{qlStats.attempts} correct</span>
+              <span>🔥 Best streak: {qlStats.bestStreak}</span>
+            </div>
+          )}
+          {qlStats.attempts === 0 && <div className="activity-detail muted">No attempts yet</div>}
         </div>
       </div>
 

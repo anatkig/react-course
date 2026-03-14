@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { course } from '../data';
+import { useProgress } from '../context/ProgressContext';
 import type { QuizQuestion } from '../types';
 
 function getAllQuestions(): QuizQuestion[] {
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export function RandomQuestion({ onClose }: Props) {
+  const { dispatch } = useProgress();
   const [question, setQuestion] = useState<QuizQuestion>(pickRandom);
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -41,11 +43,14 @@ export function RandomQuestion({ onClose }: Props) {
     setSelected(idx);
     setRevealed(true);
     if (idx === question.correctAnswer) {
-      setStreak(s => s + 1);
+      const newStreak = streak + 1;
+      setStreak(newStreak);
+      dispatch({ type: 'RECORD_RANDOM_QUESTION', payload: { correct: true, streak: newStreak } });
     } else {
       setEndedStreak(streak);
       setShowStreakEnd(true);
       setStreak(0);
+      dispatch({ type: 'RECORD_RANDOM_QUESTION', payload: { correct: false, streak: 0 } });
     }
   };
 
