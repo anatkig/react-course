@@ -32,7 +32,7 @@ export function QuickLine({ onClose }: Props) {
     if (result) return;
     const trimmed = answer.trim();
     if (!trimmed) return;
-    if (trimmed === challenge.answer.trim()) {
+    if (trimmed.replace(/\s+/g, '') === challenge.answer.trim().replace(/\s+/g, '')) {
       setResult('correct');
       const newStreak = streak + 1;
       setStreak(newStreak);
