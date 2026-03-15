@@ -540,9 +540,93 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     answer: 'const [value, setValue] = useState(() => JSON.parse(localStorage.getItem(key)) ?? initial);',
     hint: 'Use a lazy initializer to read from localStorage and fall back to the initial value.',
   },
-  // --- Module 13: TypeScript ---
   {
     id: 'ql-39',
+    prompt: 'Complete the useFetch cleanup to cancel the in-flight request on unmount.',
+    codeBefore: [
+      'useEffect(() => {',
+      '  const controller = new AbortController();',
+      '  fetch(url, { signal: controller.signal }).then(r => r.json()).then(setData);',
+    ],
+    codeAfter: [
+      '}, [url]);',
+    ],
+    answer: 'return () => controller.abort();',
+    hint: 'Return a cleanup function that calls controller.abort() to cancel the pending request.',
+  },
+  {
+    id: 'ql-40',
+    prompt: 'Complete useOnClickOutside: check if the click was inside the ref element.',
+    codeBefore: [
+      'const listener = (event) => {',
+    ],
+    codeAfter: [
+      '  handler(event);',
+      '};',
+    ],
+    answer: 'if (!ref.current || ref.current.contains(event.target)) return;',
+    hint: 'Use ref.current.contains(event.target) to check if click was inside.',
+  },
+  {
+    id: 'ql-41',
+    prompt: 'Store the current value in usePrevious so it becomes "previous" on the next render.',
+    codeBefore: [
+      'function usePrevious(value) {',
+      '  const ref = useRef();',
+      '  useEffect(() => {',
+    ],
+    codeAfter: [
+      '  });',
+      '  return ref.current;',
+      '}',
+    ],
+    answer: 'ref.current = value;',
+    hint: 'Assign value to ref.current inside useEffect — it runs after render, so the ref holds the previous value during the next render.',
+  },
+  {
+    id: 'ql-42',
+    prompt: 'Implement the toggle function that flips the boolean or accepts an explicit value.',
+    codeBefore: [
+      'const [value, setValue] = useState(false);',
+    ],
+    codeAfter: [],
+    answer: 'const toggle = useCallback((next) => setValue(curr => typeof next === "boolean" ? next : !curr), []);',
+    hint: 'Check if the argument is a boolean — if so use it directly, otherwise flip the current value.',
+  },
+  {
+    id: 'ql-43',
+    prompt: 'In useInterval, call the latest callback from the ref inside setInterval.',
+    codeBefore: [
+      'const savedCallback = useRef(callback);',
+      'useEffect(() => { savedCallback.current = callback; }, [callback]);',
+      'useEffect(() => {',
+      '  if (delay === null) return;',
+    ],
+    codeAfter: [
+      '  return () => clearInterval(id);',
+      '}, [delay]);',
+    ],
+    answer: 'const id = setInterval(() => savedCallback.current(), delay);',
+    hint: 'Call savedCallback.current() inside setInterval to always use the freshest callback.',
+  },
+  {
+    id: 'ql-44',
+    prompt: 'Complete useKeyPress: set pressed to true when the target key is pressed down.',
+    codeBefore: [
+      'const [pressed, setPressed] = useState(false);',
+      'useEffect(() => {',
+    ],
+    codeAfter: [
+      '  const upHandler = (e) => { if (e.key === targetKey) setPressed(false); };',
+      '  window.addEventListener("keydown", downHandler);',
+      '  window.addEventListener("keyup", upHandler);',
+    ],
+    answer: 'const downHandler = (e) => { if (e.key === targetKey) setPressed(true); };',
+    hint: 'Compare e.key to targetKey and call setPressed(true) on match.',
+  },
+  // --- Module 13: TypeScript ---
+  {
+    id: 'ql-45',
     prompt: 'Type the children prop to accept any renderable React content.',
     codeBefore: [
       'interface LayoutProps {',
@@ -554,7 +638,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     hint: 'React.ReactNode covers elements, strings, numbers, null, fragments, and more.',
   },
   {
-    id: 'ql-40',
+    id: 'ql-46',
     prompt: 'Type a generic List component that accepts items of type T.',
     codeBefore: [],
     codeAfter: [
@@ -566,7 +650,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
   },
   // --- Module 14: Forms ---
   {
-    id: 'ql-41',
+    id: 'ql-47',
     prompt: 'Handle multiple form inputs with a single onChange using computed property names.',
     codeBefore: [
       'const handleChange = (e) => {',
@@ -578,7 +662,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     hint: 'Use [e.target.name] as a computed key to update the right field.',
   },
   {
-    id: 'ql-42',
+    id: 'ql-48',
     prompt: 'Add a new empty field to a dynamic form fields array.',
     codeBefore: [
       'const addField = () => {',
@@ -591,7 +675,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
   },
   // --- Module 15: API Integration ---
   {
-    id: 'ql-43',
+    id: 'ql-49',
     prompt: 'Create an AbortController and pass its signal to fetch.',
     codeBefore: [
       'useEffect(() => {',
@@ -605,7 +689,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     hint: 'new AbortController() creates a controller whose signal can cancel fetch requests.',
   },
   {
-    id: 'ql-44',
+    id: 'ql-50',
     prompt: 'Implement optimistic update: update state before the API call.',
     codeBefore: [
       'const toggleLike = async (postId) => {',
@@ -621,7 +705,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
   },
   // --- Module 16: Testing ---
   {
-    id: 'ql-45',
+    id: 'ql-51',
     prompt: 'Query a button by its accessible role and name in a test.',
     codeBefore: [
       'render(<SubmitForm />);',
@@ -633,7 +717,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     hint: 'getByRole("button", { name: /text/i }) finds a button by its accessible name.',
   },
   {
-    id: 'ql-46',
+    id: 'ql-52',
     prompt: 'Simulate a user clicking a button in a test.',
     codeBefore: [
       'render(<Counter />);',
@@ -647,7 +731,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
   },
   // --- Module 17: Accessibility ---
   {
-    id: 'ql-47',
+    id: 'ql-53',
     prompt: 'Add an aria-label to an icon button that has no visible text.',
     codeBefore: [
       'function CloseButton({ onClose }) {',
@@ -661,7 +745,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     hint: 'aria-label provides an accessible name when there is no visible label text.',
   },
   {
-    id: 'ql-48',
+    id: 'ql-54',
     prompt: 'Associate a label with its input using htmlFor.',
     codeBefore: [],
     codeAfter: [
@@ -672,7 +756,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
   },
   // --- Module 18: Ecosystem & Tooling ---
   {
-    id: 'ql-49',
+    id: 'ql-55',
     prompt: 'Configure Vite to set the base path for GitHub Pages deployment.',
     codeBefore: [
       'export default defineConfig({',
@@ -685,7 +769,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     hint: 'Set the base property in vite.config to match your GitHub Pages repository name.',
   },
   {
-    id: 'ql-50',
+    id: 'ql-56',
     prompt: 'Write an ESLint rule to warn on console.log statements.',
     codeBefore: [
       'module.exports = {',
