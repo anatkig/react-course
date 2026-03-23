@@ -100,7 +100,7 @@ function Alert(props: AlertProps) {
   }
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a typed `DataTable` component that accepts a `columns` array (each with `key` and `header`) and a `rows` array of objects. Use proper TypeScript interfaces. Also create a variant using discriminated unions: the table can be in "loading", "error", or "data" state.',
         starterCode: `// TODO: Define interfaces for columns and rows
@@ -151,7 +151,7 @@ function DataTable(props: DataTableProps) {
           'TypeScript will narrow the type in each branch of the if/switch',
           'Use Record<string, string | number> for flexible row data',
         ],
-      },
+      }],
     },
     {
       id: 'mod13-t2',
@@ -237,7 +237,7 @@ const List = <T>(props: ListProps<T>) => { ... };
 const List = <T extends unknown>(props: ListProps<T>) => { ... };
 const List = <T,>(props: ListProps<T>) => { ... };
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a generic `Autocomplete<T>` component. It should accept items of any type (with a constraint that items must have a `label: string` field), filter them based on user input, and call `onSelect` with the full typed item.',
         starterCode: `// TODO: Define the generic component with proper constraints
@@ -295,7 +295,7 @@ function Autocomplete<T extends HasLabel>({
           'TypeScript infers T from the items prop when used',
           'The onSelect callback receives the full T object, preserving all type info',
         ],
-      },
+      }],
     },
     {
       id: 'mod13-t3',
@@ -397,7 +397,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 };
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a fully typed `ThemeContext` with `useReducer`. The theme state should have `mode` ("light" | "dark"), `primaryColor` (string), and `fontSize` (number). Actions: `toggleMode`, `setColor(payload)`, `setFontSize(payload)`. Create the provider and a `useTheme` hook.',
         starterCode: `// TODO: Define State and Action types
@@ -456,7 +456,7 @@ function useTheme(): ThemeContextValue {
           'React.Dispatch<Action> is the type for the dispatch function',
           'Create context as createContext<ContextValue | undefined>(undefined)',
         ],
-      },
+      }],
     },
     {
       id: 'mod13-t4',
@@ -543,7 +543,7 @@ function MessageBubble({ message }: { message: Message }) {
   return <img src={message.url} alt={message.alt} />;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a polymorphic `Typography` component with an `as` prop. It should accept "h1", "h2", "h3", "p", or "span" and pass through all native props for the chosen element. Also include a `variant` prop for styling.',
         starterCode: `// TODO: Create a polymorphic Typography component
@@ -583,7 +583,7 @@ function Typography<C extends React.ElementType = 'p'>({
           'Use React.ComponentPropsWithoutRef<C> to get the element\'s native props',
           'Omit your custom props from the native props to avoid conflicts',
         ],
-      },
+      }],
     },
   ],
   test: [

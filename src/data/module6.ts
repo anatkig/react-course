@@ -86,7 +86,7 @@ function TodoList() {
   );
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Build a notification system using Context + useReducer. Create a NotificationProvider that supports ADD_NOTIFICATION (with message and type: success/error/info) and REMOVE_NOTIFICATION actions. Create a NotificationList component and an AddNotification button.',
         starterCode: `import { createContext, useContext, useReducer } from 'react';
@@ -158,7 +158,7 @@ function AddNotification() {
           'The state shape is simply an array of notifications',
           'Create a custom hook to avoid importing context directly',
         ],
-      },
+      }],
     },
     {
       id: 'mod6-t2',
@@ -249,7 +249,7 @@ function useFetch(url) {
 2. Can call other hooks inside
 3. Can return anything (values, arrays, objects)
 4. Follow the same rules as built-in hooks (top level only)`,
-      task: {
+      tasks: [{
         description:
           'Create a `useDebounce` custom hook that takes a value and delay, returning the debounced value. Then create a `useFetch` hook that fetches data from a URL. Combine them: build a `UserSearch` component that debounces the search input and fetches matching users.',
         starterCode: `import { useState, useEffect } from 'react';
@@ -322,7 +322,7 @@ function UserSearch() {
           'useFetch should handle null/empty URLs by skipping the fetch',
           'Compose hooks: pass useDebounce output to construct the URL for useFetch',
         ],
-      },
+      }],
     },
     {
       id: 'mod6-t3',
@@ -391,7 +391,7 @@ function TemperatureConverter() {
 | 2-3 components share state | Many components across the tree need it |
 | Parent-child or sibling relationship | Deeply nested components |
 | Simple, local state | App-wide concerns (auth, theme) |`,
-      task: {
+      tasks: [{
         description:
           'Create a currency converter with two inputs (USD and EUR). When the user types in one, the other updates automatically. The exchange rate is 1 USD = 0.92 EUR. Lift the state to the parent component.',
         starterCode: `import { useState } from 'react';
@@ -441,7 +441,7 @@ function CurrencyConverter() {
           'The EUR input onChange should convert back to USD before setting state',
           'Make CurrencyInput a controlled component via props',
         ],
-      },
+      }],
     },
   ],
   test: [

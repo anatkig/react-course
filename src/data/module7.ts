@@ -62,7 +62,7 @@ function withData(WrappedComponent, url) {
 4. Don't use HOCs inside render — define them outside the component.
 
 > **Note:** Custom hooks are often preferred over HOCs in modern React as they are simpler and more composable.`,
-      task: {
+      tasks: [{
         description:
           'Create a `withTooltip` HOC that wraps any component and adds tooltip functionality. When the user hovers over the wrapped component, a tooltip appears showing a `tooltip` prop. Apply it to a simple Button component.',
         starterCode: `import { useState } from 'react';
@@ -116,7 +116,7 @@ const EnhancedButton = withTooltip(Button);
           'Use onMouseEnter/onMouseLeave to toggle tooltip visibility',
           'Position the tooltip absolutely relative to a container div',
         ],
-      },
+      }],
     },
     {
       id: 'mod7-t2',
@@ -192,7 +192,7 @@ Accordion.Panel = AccordionPanel;
 - **Flexible API** — users control layout and composition.
 - **Encapsulated state** — shared via context, hidden from the consumer.
 - **Dot notation** — \`Accordion.Item\` clearly signals the relationship.`,
-      task: {
+      tasks: [{
         description:
           'Create a `Tabs` compound component with `Tabs.Tab` and `Tabs.Panel` sub-components. Clicking a tab shows its corresponding panel. Use context to share the active tab index.',
         starterCode: `import { createContext, useContext, useState } from 'react';
@@ -253,7 +253,7 @@ Tabs.Panel = Panel;
           'Tab buttons call setActiveIndex onClick',
           'Panel only renders children when its index matches activeIndex',
         ],
-      },
+      }],
     },
     {
       id: 'mod7-t3',
@@ -308,7 +308,7 @@ function DataFetcher({ url, children }) {
 - When a custom hook isn't sufficient (e.g., you need to wrap DOM elements).
 
 > **Modern alternative:** Custom hooks often replace render props for logic sharing. Render props are still useful when you need to control what renders around the shared element.`,
-      task: {
+      tasks: [{
         description:
           'Create a `WindowSize` render prop component that tracks window dimensions and passes them to its children function. Use it to build a responsive layout that shows "Mobile" at <768px, "Tablet" at <1024px, and "Desktop" above.',
         starterCode: `import { useState, useEffect } from 'react';
@@ -351,7 +351,7 @@ function ResponsiveLabel() {
           'children(size) invokes the function-as-children pattern',
           'Use window.innerWidth and a resize event listener',
         ],
-      },
+      }],
     },
   ],
   test: [

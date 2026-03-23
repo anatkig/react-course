@@ -1,5 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useProgress } from '../context/ProgressContext';
 import { course } from '../data';
 
@@ -13,19 +12,10 @@ function getLevel(percent: number): string {
 
 interface SidebarProps {
   onRandomQuestion?: () => void;
-  onQuickLine?: () => void;
-  isOpen?: boolean;
-  onClose?: () => void;
 }
 
-export function Sidebar({ onRandomQuestion, onQuickLine, isOpen, onClose }: SidebarProps) {
+export function Sidebar({ onRandomQuestion }: SidebarProps) {
   const { progress } = useProgress();
-  const location = useLocation();
-
-  // Close sidebar on route change (mobile)
-  useEffect(() => {
-    if (isOpen && onClose) onClose();
-  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getModuleProgress = (moduleId: string) => {
     const mod = course.modules.find(m => m.id === moduleId);
@@ -35,12 +25,9 @@ export function Sidebar({ onRandomQuestion, onQuickLine, isOpen, onClose }: Side
   };
 
   return (
-    <aside className={`sidebar${isOpen ? ' open' : ''}`}>
+    <aside className="sidebar">
       <div className="sidebar-header">
         <h2>⚛️ {course.title}</h2>
-        {onClose && (
-          <button className="sidebar-close" onClick={onClose} aria-label="Close menu">✕</button>
-        )}
       </div>
 
       <nav className="sidebar-nav">
@@ -58,12 +45,6 @@ export function Sidebar({ onRandomQuestion, onQuickLine, isOpen, onClose }: Side
         {onRandomQuestion && (
           <button className="nav-item random-q-btn" onClick={onRandomQuestion}>
             🎲 Random Question
-          </button>
-        )}
-
-        {onQuickLine && (
-          <button className="nav-item quick-line-btn" onClick={onQuickLine}>
-            ⚡ Quick Line
           </button>
         )}
 

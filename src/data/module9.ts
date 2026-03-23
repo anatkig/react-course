@@ -61,7 +61,7 @@ function SafeLink({ url, children }) {
 
 2. **Injecting into CSS** — Don't use user input directly in inline styles.
 3. **eval() and new Function()** — Never pass user input to these.`,
-      task: {
+      tasks: [{
         description:
           'Create a `SafeComment` component that receives raw HTML content as a prop. It should sanitize the HTML before rendering. Implement a simple sanitizer that strips all `<script>` tags and event handler attributes (like onclick, onerror, etc.).',
         starterCode: `function sanitizeHTML(html) {
@@ -89,7 +89,7 @@ function SafeComment({ htmlContent }) {
           'Event handlers in HTML start with "on" (onclick, onerror, onload, etc.)',
           'In production, use a battle-tested library like DOMPurify instead of custom regex',
         ],
-      },
+      }],
     },
     {
       id: 'mod9-t2',
@@ -155,7 +155,7 @@ async function fetchProtectedData() {
 ### Token Refresh Pattern
 
 Keep access tokens short-lived (5–15 min) and use refresh tokens (in HttpOnly cookies) to get new ones silently.`,
-      task: {
+      tasks: [{
         description:
           'Create an `useAuth` hook that manages authentication state. It should store the access token in memory (not localStorage), provide login/logout functions, and include an `authFetch` wrapper that automatically adds the Authorization header.',
         starterCode: `function useAuth() {
@@ -205,7 +205,7 @@ Keep access tokens short-lived (5–15 min) and use refresh tokens (in HttpOnly 
           'Always include credentials: "include" for cookie-based refresh tokens',
           'Never store the token in localStorage — it is accessible to XSS attacks',
         ],
-      },
+      }],
     },
     {
       id: 'mod9-t3',
@@ -279,7 +279,7 @@ Access-Control-Allow-Origin: https://your-app.com
 Access-Control-Allow-Credentials: true
 Access-Control-Allow-Headers: Content-Type, X-CSRF-Token
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `SecureForm` component that fetches a CSRF token on mount and includes it in form submissions. The form should have a "recipient" and "amount" field for a mock transfer.',
         starterCode: `function SecureForm() {
@@ -333,7 +333,7 @@ Access-Control-Allow-Headers: Content-Type, X-CSRF-Token
           'Send the token as a custom header: X-CSRF-Token',
           'Disable the submit button until the CSRF token is loaded',
         ],
-      },
+      }],
     },
     {
       id: 'mod9-t4',
@@ -418,7 +418,7 @@ Set CSP headers to restrict what resources can load:
 <meta http-equiv="Content-Security-Policy"
   content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `SecureSignupForm` with email and password fields. Validate the email format and enforce password requirements (min 8 chars, uppercase, lowercase, number). Show validation errors inline and never log the password.',
         starterCode: `function SecureSignupForm() {
@@ -476,7 +476,7 @@ Set CSP headers to restrict what resources can load:
           'Validate both fields before allowing submission',
           'Show specific error messages for each validation rule',
         ],
-      },
+      }],
     },
   ],
   test: [

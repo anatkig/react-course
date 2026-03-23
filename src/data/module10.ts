@@ -61,7 +61,7 @@ function Portal({ children, containerId = 'portal-root' }) {
   return createPortal(children, container);
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `Tooltip` component using a portal. It should render the tooltip content at document.body level. The tooltip should appear when the user hovers over the trigger element and disappear when they leave.',
         starterCode: `function Tooltip({ children, text }) {
@@ -102,7 +102,7 @@ function Portal({ children, containerId = 'portal-root' }) {
           'Use getBoundingClientRect() to get the position of the trigger element',
           'Remember to add window.scrollY for absolute positioning',
         ],
-      },
+      }],
     },
     {
       id: 'mod10-t2',
@@ -167,7 +167,7 @@ function ResettableForm({ resetKey, onSubmit }) {
   return <input value={value} onChange={e => setValue(e.target.value)} />;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `TabEditor` component with multiple tabs (e.g., "Bio", "Settings", "Notes"). Each tab shows a text area. Use the key trick to reset the text area content when switching tabs, without manual state clearing.',
         starterCode: `const TABS = ['Bio', 'Settings', 'Notes'];
@@ -220,7 +220,7 @@ function Editor({ tabName }) {
           'When the key changes, React unmounts and remounts the component',
           'The Editor component just needs a simple useState for its text',
         ],
-      },
+      }],
     },
     {
       id: 'mod10-t3',
@@ -287,7 +287,7 @@ function App() {
 - **Component libraries** — expose focus/scroll methods on custom inputs
 - **Complex components** — expose a simplified imperative API
 - **Integration with third-party libraries** — wrap imperative APIs in React components`,
-      task: {
+      tasks: [{
         description:
           'Create a `CountdownTimer` component that uses `forwardRef` and `useImperativeHandle` to expose `start()`, `stop()`, and `reset()` methods to the parent. The timer should count down from a given number of seconds.',
         starterCode: `// TODO: Use forwardRef and useImperativeHandle
@@ -337,7 +337,7 @@ function CountdownTimer({ seconds }, ref) {
           'Use setInterval and store its id in a ref for cleanup',
           'useImperativeHandle takes (ref, createHandle) as arguments',
         ],
-      },
+      }],
     },
     {
       id: 'mod10-t4',
@@ -414,7 +414,7 @@ setCount(count + 1);
 // ✅ Always uses latest state
 setCount(prev => prev + 1);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create an `useUndoableState` hook that wraps useState and adds undo/redo functionality. It should maintain a history stack and provide `undo()`, `redo()`, `set()`, and `canUndo`/`canRedo` flags.',
         starterCode: `function useUndoableState(initialValue) {
@@ -475,7 +475,7 @@ setCount(prev => prev + 1);
           'On set: push present to past, clear future',
           'On undo: pop from past, push present to future',
         ],
-      },
+      }],
     },
   ],
   test: [

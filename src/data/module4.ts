@@ -73,7 +73,7 @@ function reducer(state, action) {
 
 dispatch({ type: 'add_todo', payload: { id: 1, text: 'Learn React' } });
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `ShoppingCart` component using useReducer. Support actions: ADD_ITEM (with name and price), REMOVE_ITEM (by index), and CLEAR_CART. Display items and the total price.',
         starterCode: `import { useReducer } from 'react';
@@ -131,7 +131,7 @@ function ShoppingCart() {
           'Use array spread for adding, filter for removing',
           'Use reduce() to calculate the total price',
         ],
-      },
+      }],
     },
     {
       id: 'mod4-t2',
@@ -196,7 +196,7 @@ function ThemeProvider({ children }) {
 - **Auth** (current user, login/logout)
 - **Locale/language**
 - **Any data needed by many components** at different nesting levels`,
-      task: {
+      tasks: [{
         description:
           'Create a simple AuthContext with a provider that tracks `user` (null or { name }) and provides `login` and `logout` functions. Create a `NavBar` component that shows "Welcome, {name}" with a Logout button when logged in, or a Login button when not.',
         starterCode: `import { createContext, useContext, useState } from 'react';
@@ -242,7 +242,7 @@ function NavBar() {
           'The Provider value should be an object containing user, login, and logout',
           'Use useContext(AuthContext) to consume the values',
         ],
-      },
+      }],
     },
     {
       id: 'mod4-t3',
@@ -314,7 +314,7 @@ Returns a **memoized function** that only changes when dependencies change. Usef
 const memoizedFn = useMemo(() => () => doSomething(a, b), [a, b]);
 const memoizedFn = useCallback(() => doSomething(a, b), [a, b]);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `FilteredList` component: 1) Use `useRef` to auto-focus a search input on mount. 2) Use `useMemo` to filter and sort a large list based on the search term. 3) Use `useCallback` for the onChange handler.',
         starterCode: `import { useState, useRef, useMemo, useCallback, useEffect } from 'react';
@@ -372,7 +372,7 @@ function FilteredList() {
           'Call inputRef.current?.focus() in a useEffect with []',
           'useMemo dependencies should include the search term',
         ],
-      },
+      }],
     },
   ],
   test: [

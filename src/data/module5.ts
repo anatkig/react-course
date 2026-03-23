@@ -72,7 +72,7 @@ function App() {
 \`\`\`
 
 The \`*\` path matches any URL that doesn't match other routes.`,
-      task: {
+      tasks: [{
         description:
           'Set up a basic router with three pages: Home ("/"), Products ("/products"), and About ("/about"). Add a navigation bar with NavLink components that highlight the active page. Add a 404 catch-all route.',
         starterCode: `import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
@@ -109,7 +109,7 @@ function App() {
           'Add end prop to the "/" NavLink to avoid matching all routes',
           'Place the "*" route last to catch unmatched URLs',
         ],
-      },
+      }],
     },
     {
       id: 'mod5-t2',
@@ -180,7 +180,7 @@ function LoginForm() {
   };
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a mini blog app with routes: "/posts" (list of posts), "/posts/:postId" (single post). The list should link to each post. The post detail page should read the postId parameter and display it. Add a "Back to list" button using useNavigate.',
         starterCode: `import { Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
@@ -236,7 +236,7 @@ function PostDetail() {
           'useParams returns strings — convert to number if needed',
           'Use navigate("/posts") or navigate(-1) to go back',
         ],
-      },
+      }],
     },
     {
       id: 'mod5-t3',
@@ -302,7 +302,7 @@ Nested routes are perfect for shared layouts:
 \`\`\`
 
 Routes without a \`path\` prop act as **layout routes** — they render a wrapper around their children.`,
-      task: {
+      tasks: [{
         description:
           'Create a dashboard with nested routes. The layout has a sidebar with links and an Outlet for content. Add nested routes for: index (Overview), "analytics", and "settings". Each shows a simple component.',
         starterCode: `import { Routes, Route, NavLink, Outlet } from 'react-router-dom';
@@ -347,7 +347,7 @@ function App() {
           'Use index prop for the default child route',
           'Child route paths are relative — just "analytics", not "/dashboard/analytics"',
         ],
-      },
+      }],
     },
   ],
   test: [

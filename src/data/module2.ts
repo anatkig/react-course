@@ -64,7 +64,7 @@ const [items, setItems] = useState([]);
 setItems(prev => [...prev, newItem]); // add
 setItems(prev => prev.filter(i => i.id !== id)); // remove
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `ToggleSwitch` component that maintains an on/off state. Display the current state as text and provide a button to toggle it. Also add a reset counter that tracks how many times the switch has been toggled.',
         starterCode: `import { useState } from 'react';
@@ -98,7 +98,7 @@ function ToggleSwitch() {
           'Use the functional updater form: setIsOn(prev => !prev)',
           'Combine both state updates in a single handler function',
         ],
-      },
+      }],
     },
     {
       id: 'mod2-t2',
@@ -159,7 +159,7 @@ function Form() {
 | \`onKeyDown\` / \`onKeyUp\` | Keyboard interactions |
 | \`onFocus\` / \`onBlur\` | Focus management |
 | \`onMouseEnter\` / \`onMouseLeave\` | Hover effects |`,
-      task: {
+      tasks: [{
         description:
           'Create a `SearchBox` component with an input field and a search button. Track the input value in state. When the user presses Enter or clicks Search, display the search query below the input. Also implement a Clear button that resets everything.',
         starterCode: `import { useState } from 'react';
@@ -205,7 +205,7 @@ function SearchBox() {
           'Call e.preventDefault() in onSubmit to prevent page reload',
           'Use type="button" on the Clear button so it does not submit the form',
         ],
-      },
+      }],
     },
     {
       id: 'mod2-t3',
@@ -297,7 +297,7 @@ const handleSubmit = (e) => {
   // proceed
 };
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `RegistrationForm` component with fields: username, email, password, and a "role" select (user/admin). Use a single state object for all fields. Add validation: username must be at least 3 characters and email must contain @. Show error messages inline.',
         starterCode: `import { useState } from 'react';
@@ -370,7 +370,7 @@ function RegistrationForm() {
           'Store errors as an object with field names as keys',
           'Validate in handleSubmit before proceeding',
         ],
-      },
+      }],
     },
   ],
   test: [

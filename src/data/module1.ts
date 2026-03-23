@@ -47,7 +47,7 @@ const el = <h1 className="title">Hello</h1>;
 // Compiled
 const el = React.createElement('h1', { className: 'title' }, 'Hello');
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a component called `UserCard` that displays a user\'s name, email, and role using JSX. The component should accept these as props and wrap them in a `<div>` with the className "user-card".',
         starterCode: `function UserCard() {
@@ -72,7 +72,7 @@ const el = React.createElement('h1', { className: 'title' }, 'Hello');
           'Use curly braces {} to embed JavaScript expressions in JSX',
           'Remember to use className instead of class',
         ],
-      },
+      }],
     },
     {
       id: 'mod1-t2',
@@ -125,7 +125,7 @@ function Button({ label = "Click me", variant = "primary" }) {
   return <button className={variant}>{label}</button>;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `ProductList` component that receives an array of products as a prop. Each product has a `name` and `price`. Render each product using a separate `ProductItem` component.',
         starterCode: `function ProductItem({ name, price }) {
@@ -164,7 +164,7 @@ function ProductList({ products }) {
           'Each mapped element needs a unique key prop',
           'Pass individual product properties as props to ProductItem',
         ],
-      },
+      }],
     },
     {
       id: 'mod1-t3',
@@ -228,7 +228,7 @@ function Card({ title, children }) {
 const btnProps = { type: "submit", disabled: false };
 <button {...btnProps}>Submit</button>
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `Layout` component that uses the `children` prop to wrap content. It should render a header (with a `title` prop), the children in a main section, and a footer with a `copyright` prop.',
         starterCode: `function Layout({ title, copyright, children }) {
@@ -255,7 +255,7 @@ const btnProps = { type: "submit", disabled: false };
           'Wrap everything in a single root element',
           'Use semantic HTML tags: header, main, footer',
         ],
-      },
+      }],
     },
     {
       id: 'mod1-t4',
@@ -315,7 +315,7 @@ function StatusBadge({ status }) {
   return <span style={{ color }}>{status}</span>;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `TaskBoard` component that takes an array of tasks (each with `id`, `title`, `completed`). Render each task with a visual distinction for completed vs. incomplete tasks. Show a "No tasks" message if the array is empty.',
         starterCode: `function TaskBoard({ tasks }) {
@@ -348,7 +348,7 @@ function StatusBadge({ status }) {
           'Use a ternary for className to toggle styles',
           'Use && for conditionally showing elements',
         ],
-      },
+      }],
     },
   ],
   test: [

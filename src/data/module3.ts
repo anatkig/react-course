@@ -70,7 +70,7 @@ useEffect(() => {
   console.log(count);
 }, [count]);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `WindowSize` component that displays the current window width and height. Use useEffect to listen for the resize event and clean up the listener on unmount.',
         starterCode: `import { useState, useEffect } from 'react';
@@ -110,7 +110,7 @@ function WindowSize() {
           'Use window.addEventListener in useEffect',
           'Return a cleanup function that calls removeEventListener',
         ],
-      },
+      }],
     },
     {
       id: 'mod3-t2',
@@ -183,7 +183,7 @@ useEffect(() => {
   return () => controller.abort();
 }, [url]);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `PostViewer` component that fetches a post from JSONPlaceholder API (https://jsonplaceholder.typicode.com/posts/{id}). Accept `postId` as a prop. Show loading, error, and success states. Implement request cancellation using AbortController.',
         starterCode: `import { useState, useEffect } from 'react';
@@ -242,7 +242,7 @@ function PostViewer({ postId }) {
           'In the cleanup, call controller.abort()',
           'Check err.name !== "AbortError" before setting error state',
         ],
-      },
+      }],
     },
     {
       id: 'mod3-t3',
@@ -304,7 +304,7 @@ useEffect(() => {
   return () => sub.unsubscribe();
 }, [channel]);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `SearchResults` component that fetches search results when a `query` prop changes but only after a 500ms debounce. Use useEffect with proper cleanup to cancel the previous timeout when the query changes.',
         starterCode: `import { useState, useEffect } from 'react';
@@ -356,7 +356,7 @@ function SearchResults({ query }) {
           'Return clearTimeout from useEffect to cancel on re-run',
           'Include query in the dependency array',
         ],
-      },
+      }],
     },
   ],
   test: [

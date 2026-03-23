@@ -66,7 +66,7 @@ Use the React DevTools **Profiler** tab to:
 1. Record a session of interactions.
 2. See which components re-rendered and how long each took.
 3. Identify unnecessary re-renders.`,
-      task: {
+      tasks: [{
         description:
           'Create a parent component with a counter button and a heavy `ExpensiveChart` child component. Without optimization, ExpensiveChart re-renders on every counter click. Fix this using React.memo and useCallback for any function props.',
         starterCode: `import { useState, memo, useCallback } from 'react';
@@ -119,7 +119,7 @@ function Dashboard() {
           'Memoize the data array with useMemo so the reference doesn\'t change',
           'Memoize handlePointClick with useCallback to stabilize the reference',
         ],
-      },
+      }],
     },
     {
       id: 'mod8-t2',
@@ -201,7 +201,7 @@ export { add as default } from './MathUtils';
 
 const Add = lazy(() => import('./MathUtilsLazy'));
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Refactor an app that imports three heavy page components to use React.lazy and Suspense. Add a loading spinner as the fallback. Create an ErrorBoundary class component that catches loading errors.',
         starterCode: `import { Suspense, lazy, Component } from 'react';
@@ -259,7 +259,7 @@ function App() {
           'Wrap lazy components in <Suspense> with a fallback',
           'ErrorBoundary must be a class with getDerivedStateFromError',
         ],
-      },
+      }],
     },
     {
       id: 'mod8-t3',
@@ -352,7 +352,7 @@ return (
 ### 7. Handle Loading and Error States
 
 Always account for loading, error, and empty states in data-driven components.`,
-      task: {
+      tasks: [{
         description:
           'Refactor a poorly-structured component that has too many responsibilities: it fetches data, transforms it, manages a form, and renders everything. Split it into smaller components and a custom hook. Follow best practices.',
         starterCode: `// This component does too much — refactor it!
@@ -457,7 +457,7 @@ function UserManager() {
           'Move the form into its own component (AddUserForm)',
           'Move the list into its own component (UserList)',
         ],
-      },
+      }],
     },
   ],
   test: [

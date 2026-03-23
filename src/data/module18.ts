@@ -113,7 +113,7 @@ export default defineConfig({
   },
 });
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a Vite configuration file with: path aliases (@/ for src), environment-based API URL, dev server proxy for /api routes, manual chunks for vendor libraries, and source maps in production.',
         starterCode: `// vite.config.ts
@@ -163,7 +163,7 @@ export default defineConfig({
           'Environment variables in Vite must start with VITE_',
           'manualChunks splits specified packages into separate bundle files',
         ],
-      },
+      }],
     },
     {
       id: 'mod18-t2',
@@ -279,7 +279,7 @@ npx husky init
   }
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create an ESLint flat config and Prettier config for a React TypeScript project. Include rules for hooks, unused variables, no console.log, and TypeScript strict mode. Set up package.json scripts for linting and formatting.',
         starterCode: `// eslint.config.js
@@ -331,7 +331,7 @@ export default tseslint.config(
           'Use argsIgnorePattern: "^_" to allow unused args prefixed with underscore',
           'Add the ignores config to exclude the dist folder',
         ],
-      },
+      }],
     },
     {
       id: 'mod18-t3',
@@ -455,7 +455,7 @@ Buttons trigger actions. Use the appropriate variant for the context.
 
 <ArgsTable of={ButtonStories} />
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Write Storybook stories for a `Card` component that has props: title, description, imageUrl (optional), variant ("default" | "highlighted"), and onClick. Include stories for default, highlighted, with image, and without image variants.',
         starterCode: `// Card.stories.tsx
@@ -533,7 +533,7 @@ export const AllVariants: Story = {
           'Each exported const is a separate story in the Storybook sidebar',
           'Use the render function for stories that show multiple variants together',
         ],
-      },
+      }],
     },
     {
       id: 'mod18-t4',
@@ -651,7 +651,7 @@ Many platforms offer preview deployments for pull requests:
 - **GitHub Pages**: Use PR-specific branches
 
 This gives reviewers a live preview of changes before merging.`,
-      task: {
+      tasks: [{
         description:
           'Create a GitHub Actions CI/CD workflow that: lints, type-checks, tests (with coverage threshold), builds, and deploys to GitHub Pages on push to main. Include a separate job for PR checks.',
         starterCode: `# .github/workflows/ci.yml
@@ -721,7 +721,7 @@ jobs:
           'Use "if" condition to only deploy from main branch pushes',
           'Upload build artifacts to pass them between jobs',
         ],
-      },
+      }],
     },
   ],
   test: [

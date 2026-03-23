@@ -82,7 +82,7 @@ When semantic HTML isn't enough, use ARIA:
 // ✅ Just use a button
 <button onClick={handleClick}>Save</button>
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Refactor a poorly accessible component to use semantic HTML and proper ARIA attributes. The component is a notification center with a list of messages, a dismiss button for each, and a clear-all button.',
         starterCode: `// ❌ Current inaccessible version
@@ -134,7 +134,7 @@ function NotificationCenter({ notifications, onDismiss, onClearAll }) {
           'Use <h2> for the title, <ul>/<li> for the list, <button> for actions',
           'Add aria-label to the dismiss button explaining what it dismisses',
         ],
-      },
+      }],
     },
     {
       id: 'mod17-t2',
@@ -249,7 +249,7 @@ function Layout({ children }) {
   z-index: 1000;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create an accessible `Modal` component with focus trapping. When the modal opens, focus should move to the modal. Tab/Shift+Tab should cycle within the modal. Escape closes it. When closed, focus returns to the trigger.',
         starterCode: `function Modal({ isOpen, onClose, title, children }) {
@@ -325,7 +325,7 @@ function Layout({ children }) {
           'Use role="dialog" and aria-modal="true" on the modal container',
           'Query all focusable elements and trap Tab between first and last',
         ],
-      },
+      }],
     },
     {
       id: 'mod17-t3',
@@ -449,7 +449,7 @@ function TodoApp() {
 <h1>Dashboard</h1>
   <h4>Activity</h4>  // Skipped h2 and h3!
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `Toast` notification system that is screen-reader accessible. Toasts should be announced via aria-live when they appear. Include a visually hidden announcer and proper dismiss functionality.',
         starterCode: `function useToast() {
@@ -502,7 +502,7 @@ function ToastContainer({ toasts, onDismiss }) {
           'Each toast should have role="status" for proper screen reader support',
           'Dismiss buttons need aria-label explaining what they dismiss',
         ],
-      },
+      }],
     },
     {
       id: 'mod17-t4',
@@ -597,7 +597,7 @@ it('closes modal on Escape', async () => {
 - [ ] Dynamic content uses aria-live regions
 - [ ] Modals trap focus and restore it on close
 - [ ] Sufficient color contrast (4.5:1 for text)`,
-      task: {
+      tasks: [{
         description:
           'Write accessibility tests for a `NavigationMenu` component. Test: proper ARIA roles, keyboard navigation (arrow keys to move between items, Enter to select), and that the current page is indicated with aria-current.',
         starterCode: `function NavigationMenu({ items, currentPath, onNavigate }) {
@@ -671,7 +671,7 @@ describe('NavigationMenu a11y', () => {
           'Use toHaveAttribute to check aria-current',
           'Use jest-axe for automated accessibility violation detection',
         ],
-      },
+      }],
     },
   ],
   test: [

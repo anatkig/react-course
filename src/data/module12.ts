@@ -116,7 +116,7 @@ function useThrottle(value, interval) {
   return throttled;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Implement a `useDebounce` hook and use it in a `SearchBox` component. The component should show the current input value and the debounced value, demonstrating the delay. Also show a counter of how many API calls would be saved.',
         starterCode: `function useDebounce(value, delay) {
@@ -169,7 +169,7 @@ function SearchBox() {
           'The debounced value updates only after the user stops typing for the delay period',
           'Track keystroke count vs API call count to demonstrate the savings',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t2',
@@ -271,7 +271,7 @@ function useLocalStorage(key, initialValue) {
   return [storedValue, setValue];
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Implement `useLocalStorage` with cross-tab sync support. Create a `Preferences` component that stores theme (light/dark) and language (en/es/fr) using the hook. Changes should persist across page refreshes and sync across tabs.',
         starterCode: `function useLocalStorage(key, initialValue) {
@@ -336,7 +336,7 @@ function Preferences() {
           'Listen for the "storage" event on window for cross-tab sync',
           'The storage event only fires in OTHER tabs, not the current one',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t3',
@@ -443,7 +443,7 @@ function useFetch(url, options = {}) {
   return { ...state, refetch };
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Implement a `useFetch` hook with loading, error, and refetch support. Use it in a `PostList` component that fetches and displays posts. Include a "Retry" button that appears on error and a "Refresh" button for manual refetch.',
         starterCode: `function useFetch(url) {
@@ -518,7 +518,7 @@ function PostList() {
           'Return a refetch function that re-runs the fetch',
           'Use useCallback for fetchData so it only changes when url changes',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t4',
@@ -650,7 +650,7 @@ function useWindowSize() {
   return size; // { width, height }
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Build a `ResponsiveDropdown` component that uses both `useMediaQuery` and `useOnClickOutside`. On mobile (< 768px), the dropdown should appear as a full-screen overlay. On desktop, it should appear as a positioned dropdown. Clicking outside closes it.',
         starterCode: `function useMediaQuery(query) {
@@ -717,7 +717,7 @@ function ResponsiveDropdown({ items }) {
           'useOnClickOutside listens for mousedown/touchstart on document',
           'Check ref.current.contains(event.target) to see if click was inside',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t5',
@@ -807,7 +807,7 @@ function FAQ({ question, answer }) {
 | useToggle | \`const [open, toggle] = useToggle();\` + \`toggle()\` everywhere | Cleaner intent |
 
 The main benefit is **readability**: \`toggle()\` communicates intent better than \`setOpen(o => !o)\`.`,
-      task: {
+      tasks: [{
         description:
           'Build a `ComparisonTracker` component that uses `usePrevious` and `useToggle`. It should track a numeric value and display whether it went up or down compared to the previous render. Include a toggleable "details" section using `useToggle`.',
         starterCode: `function usePrevious(value) {
@@ -871,7 +871,7 @@ function ComparisonTracker() {
           'useToggle should accept an optional explicit boolean in toggle()',
           'On first render, usePrevious returns undefined because the effect hasn\'t run yet',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t6',
@@ -1000,7 +1000,7 @@ function Notification({ message, onDismiss }) {
   );
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Build a `Countdown` component using `useInterval`. It should count down from a given number to 0, display the remaining time, and have Start/Pause/Reset buttons. The interval should pause when the countdown reaches 0 or when the user clicks Pause.',
         starterCode: `function useInterval(callback, delay) {
@@ -1046,7 +1046,7 @@ function Countdown({ startFrom = 10 }) {
           'Pass null as delay to pause the interval',
           'Stop the interval when count reaches 0 by setting running to false',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t7',
@@ -1187,7 +1187,7 @@ function Editor() {
   return <textarea placeholder="Type here, press Ctrl+S to save" />;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Build a `KeyboardNavigator` component using `useKeyPress` and `useEventListener`. Display a list of items that the user can navigate with arrow keys (up/down to move, Enter to select). Also use `useEventListener` to detect when the user scrolls and show a "scroll to top" indicator.',
         starterCode: `function useEventListener(eventName, handler, element = window) {
@@ -1263,7 +1263,7 @@ function KeyboardNavigator({ items }) {
           'Support both window and ref elements by checking element?.current',
           'For keyboard navigation, clamp the index between 0 and items.length - 1',
         ],
-      },
+      }],
     },
     {
       id: 'mod12-t8',
@@ -1412,7 +1412,7 @@ function HoverCard({ title, details }) {
 | Simple style changes (color, background) | Conditional rendering (show/hide elements) |
 | Transitions and animations | Triggering side effects (prefetch, analytics) |
 | No JavaScript logic needed | Combining with other state (hover + timeout) |`,
-      task: {
+      tasks: [{
         description:
           'Build a `LazyImageGrid` component using `useIntersectionObserver` and `useHover`. Images should lazy-load (show a placeholder until they scroll into view). On hover, display an overlay with the image title using `useHover`.',
         starterCode: `function useIntersectionObserver(ref, options = {}) {
@@ -1505,7 +1505,7 @@ function LazyImageGrid({ images }) {
           'Once an image becomes visible, set a "loaded" flag and keep it true (don\'t unload)',
           'For useHover, use mouseenter/mouseleave events on the ref element',
         ],
-      },
+      }],
     },
   ],
   test: [

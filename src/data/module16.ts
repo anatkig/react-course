@@ -103,7 +103,7 @@ it('filters completed todos', () => {
   expect(completed[0].text).toBe('Learn React');
 });
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Write tests for a `formatPrice` utility function that formats numbers as currency strings. Test edge cases: zero, negative numbers, large numbers, and decimal rounding.',
         starterCode: `// Function to test
@@ -160,7 +160,7 @@ describe('formatPrice', () => {
           'Test edge cases: 0, negative, very large, many decimals',
           'Each test should verify one specific behavior',
         ],
-      },
+      }],
     },
     {
       id: 'mod16-t2',
@@ -241,7 +241,7 @@ it('types in an input', async () => {
 // Use queryBy when you expect something NOT to be there
 expect(screen.queryByText('Error')).not.toBeInTheDocument();
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Write tests for a `LoginForm` component. Test: rendering the form fields, submitting with valid data calls onSubmit, showing error when fields are empty, and the password field is type="password".',
         starterCode: `function LoginForm({ onSubmit }) {
@@ -321,7 +321,7 @@ describe('LoginForm', () => {
           'Use vi.fn() (Vitest) or jest.fn() (Jest) to create mock functions',
           'Use queryByRole instead of getByRole when testing absence',
         ],
-      },
+      }],
     },
     {
       id: 'mod16-t3',
@@ -433,7 +433,7 @@ it('debounces search input', async () => {
   expect(mockSearch).toHaveBeenCalledWith('React');
 });
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Write tests for a `UserProfile` component that fetches user data. Test: loading state, successful data display, error state on fetch failure, and that it calls the correct URL.',
         starterCode: `function UserProfile({ userId }) {
@@ -506,7 +506,7 @@ describe('UserProfile', () => {
           'Use mockResolvedValueOnce for successful responses',
           'Use findByText (async) to wait for the loading state to resolve',
         ],
-      },
+      }],
     },
     {
       id: 'mod16-t4',
@@ -592,7 +592,7 @@ it('increments counter', () => {
 | Components | User interactions, rendering | Medium-High |
 | Pages / Integration | Happy paths, critical flows | Medium |
 | E2E | Key user journeys | Low (but valuable) |`,
-      task: {
+      tasks: [{
         description:
           'Write tests for a `useCounter` custom hook. Test initialization, increment, decrement, reset, and ensure it handles boundaries (e.g., min/max values if provided).',
         starterCode: `function useCounter(initial = 0, { min = -Infinity, max = Infinity } = {}) {
@@ -659,7 +659,7 @@ describe('useCounter', () => {
           'Wrap state updates in act() to flush React updates',
           'Test boundary conditions: what happens at min/max limits',
         ],
-      },
+      }],
     },
   ],
   test: [

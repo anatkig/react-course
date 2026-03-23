@@ -128,7 +128,7 @@ function useCachedFetch(url) {
   return { data, loading };
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `useAPI` hook that supports GET, POST, PUT, and DELETE methods. GET requests should auto-execute on mount. Other methods should return an `execute` function. Include loading, error, and data states. Use AbortController for cleanup.',
         starterCode: `function useAPI(method, url) {
@@ -182,7 +182,7 @@ function useCachedFetch(url) {
           'Store AbortController in a ref and abort previous requests',
           'Return execute function so POST/PUT/DELETE can be triggered manually',
         ],
-      },
+      }],
     },
     {
       id: 'mod15-t2',
@@ -269,7 +269,7 @@ const addTodo = async (text) => {
 
 - **Good for**: Toggle buttons, likes, adding items to lists, status changes
 - **Bad for**: Financial transactions, critical data changes, multi-step processes`,
-      task: {
+      tasks: [{
         description:
           'Create a `LikeButton` component with optimistic updates. It should show the current like count and a like/unlike toggle. Update the UI immediately, send the request, and roll back if it fails.',
         starterCode: `function LikeButton({ postId, initialLikes, initialLiked }) {
@@ -312,7 +312,7 @@ const addTodo = async (text) => {
           'Update state immediately, then send the API request',
           'In the catch block, restore the previous state to roll back',
         ],
-      },
+      }],
     },
     {
       id: 'mod15-t3',
@@ -422,7 +422,7 @@ function InfiniteList() {
   );
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `useInfiniteScroll` hook using Intersection Observer. Use it in a component that loads pages of items as the user scrolls. Include loading and "no more items" states.',
         starterCode: `function useInfiniteScroll(loadMore, hasMore) {
@@ -489,7 +489,7 @@ function InfinitePostList() {
           'Use a ref for loadMore to avoid recreating the observer on every render',
           'Set hasMore to false when the API returns fewer items than requested',
         ],
-      },
+      }],
     },
     {
       id: 'mod15-t4',
@@ -611,7 +611,7 @@ function DataView({ url }) {
   return <DataDisplay data={data} />;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `DataFetcher` component that demonstrates comprehensive error handling: loading skeletons, inline error messages for 4xx errors, error boundary fallback for 5xx errors, and a retry mechanism with exponential backoff.',
         starterCode: `function DataFetcher({ url }) {
@@ -683,7 +683,7 @@ function DataFetcher({ url }) {
           'Throw 5xx errors to let an ErrorBoundary handle server errors',
           'Handle 4xx errors inline with a retry button',
         ],
-      },
+      }],
     },
   ],
   test: [

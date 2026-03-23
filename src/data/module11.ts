@@ -90,7 +90,7 @@ function Chat({ messages }) {
   }, [draft]);
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `StopWatch` component with start/stop/reset buttons. It should display elapsed time in seconds. Use setInterval correctly, avoiding the stale closure trap.',
         starterCode: `function StopWatch() {
@@ -132,7 +132,7 @@ function Chat({ messages }) {
           'Store the interval ID in a ref so cleanup can clear it',
           'Let the running state control the useEffect that creates/clears the interval',
         ],
-      },
+      }],
     },
     {
       id: 'mod11-t2',
@@ -225,7 +225,7 @@ const renderCount = useRef(0);
 renderCount.current++;
 console.log('Render #', renderCount.current);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'You are given a buggy component that has an infinite re-render loop. Fix it. The component should fetch a list of users and allow filtering by a search term.',
         starterCode: `function UserSearch() {
@@ -280,7 +280,7 @@ console.log('Render #', renderCount.current);
           'filteredUsers is derived state — compute it during render instead of storing it',
           'The fetch only needs to run once on mount — use an empty dependency array',
         ],
-      },
+      }],
     },
     {
       id: 'mod11-t3',
@@ -364,7 +364,7 @@ setUser(produce(draft => {
   draft.contacts[0].email = 'new@email.com';
 }));
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Fix a buggy `TodoApp` component that has several state mutation bugs. The app should let you add todos, toggle their completion, delete todos, and sort them by name.',
         starterCode: `function TodoApp() {
@@ -458,7 +458,7 @@ setUser(produce(draft => {
           'Use .map() with spread for updates, .filter() for deletions',
           'Copy the array before sorting: [...todos].sort(...)',
         ],
-      },
+      }],
     },
     {
       id: 'mod11-t4',
@@ -570,7 +570,7 @@ useEffect(() => {
   return () => ws.close();
 }, []);
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Fix a component that fetches user profile data. It has three bugs: missing dependency, race condition, and missing cleanup. The component should correctly handle rapid userId changes.',
         starterCode: `function UserProfile({ userId }) {
@@ -619,7 +619,7 @@ useEffect(() => {
           'Use AbortController to cancel in-flight requests when userId changes',
           'Return a cleanup function that calls controller.abort()',
         ],
-      },
+      }],
     },
   ],
   test: [

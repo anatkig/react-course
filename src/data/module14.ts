@@ -103,7 +103,7 @@ function useFormField(initialValue) {
   return { value, touched, dirty, onChange: handleChange, onBlur: handleBlur };
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `useForm` hook that manages form state, field updates, dirty tracking, and reset. Use it in a multi-field `ProfileForm` component with firstName, lastName, email, and bio fields.',
         starterCode: `function useForm(initialValues) {
@@ -162,7 +162,7 @@ function ProfileForm() {
           'Track dirty state — set to true when any field changes',
           'Reset should restore initial values and clear dirty flag',
         ],
-      },
+      }],
     },
     {
       id: 'mod14-t2',
@@ -274,7 +274,7 @@ function SmartForm() {
   );
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create a `SurveyBuilder` component where an admin can dynamically add questions. Each question has a type (text, multiple-choice, rating) and the form adjusts accordingly. Multiple-choice questions should allow adding/removing options.',
         starterCode: `function SurveyBuilder() {
@@ -345,7 +345,7 @@ function SmartForm() {
           'Use the type field to conditionally render different form elements',
           'For multiple-choice, store options as a sub-array within each question',
         ],
-      },
+      }],
     },
     {
       id: 'mod14-t3',
@@ -441,7 +441,7 @@ function validateForm(values) {
   return errors;
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Implement a `useValidatedForm` hook that supports field-level validation with validate-on-blur and validate-on-change-after-touch. Use it in a `SignupForm` with email, password, and confirm password. Show inline errors.',
         starterCode: `function useValidatedForm(initialValues, validationRules) {
@@ -535,7 +535,7 @@ function SignupForm() {
           'On blur: mark field as touched and validate it',
           'On change: only validate if field was already touched',
         ],
-      },
+      }],
     },
     {
       id: 'mod14-t4',
@@ -647,7 +647,7 @@ function ErrorSummary({ errors }) {
   );
 }
 \`\`\``,
-      task: {
+      tasks: [{
         description:
           'Create an accessible `ContactForm` with proper label association, error announcements (role="alert"), aria-invalid, aria-describedby, focus management on error, and a form-level error summary at the top.',
         starterCode: `function ContactForm() {
@@ -727,7 +727,7 @@ function ErrorSummary({ errors }) {
           'Use aria-invalid={!!error} and aria-describedby pointing to the error element',
           'Focus the first error field when validation fails on submit',
         ],
-      },
+      }],
     },
   ],
   test: [
