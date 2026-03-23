@@ -12,9 +12,12 @@ function getLevel(percent: number): string {
 
 interface SidebarProps {
   onRandomQuestion?: () => void;
+  onQuickLine?: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export function Sidebar({ onRandomQuestion }: SidebarProps) {
+export function Sidebar({ onRandomQuestion, onQuickLine, isOpen, onClose }: SidebarProps) {
   const { progress } = useProgress();
 
   const getModuleProgress = (moduleId: string) => {
@@ -25,17 +28,17 @@ export function Sidebar({ onRandomQuestion }: SidebarProps) {
   };
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <h2>⚛️ {course.title}</h2>
       </div>
 
       <nav className="sidebar-nav">
-        <NavLink to="/" end className="nav-item">
+        <NavLink to="/" end className="nav-item" onClick={onClose}>
           🏠 Dashboard
         </NavLink>
 
-        <NavLink to="/level-test" className="nav-item">
+        <NavLink to="/level-test" className="nav-item" onClick={onClose}>
           📋 Level Evaluation
           {progress.levelTestResult && (
             <span className="badge">{getLevel(Math.round((progress.levelTestResult.score / progress.levelTestResult.total) * 100))}</span>
@@ -43,8 +46,14 @@ export function Sidebar({ onRandomQuestion }: SidebarProps) {
         </NavLink>
 
         {onRandomQuestion && (
-          <button className="nav-item random-q-btn" onClick={onRandomQuestion}>
+          <button className="nav-item random-q-btn" onClick={() => { onRandomQuestion(); onClose(); }}>
             🎲 Random Question
+          </button>
+        )}
+
+        {onQuickLine && (
+          <button className="nav-item random-q-btn" onClick={() => { onQuickLine(); onClose(); }}>
+            ⚡ Quick Line
           </button>
         )}
 
@@ -54,7 +63,7 @@ export function Sidebar({ onRandomQuestion }: SidebarProps) {
 
         {course.modules.map((mod, i) => (
           <div key={mod.id} className="module-nav">
-            <NavLink to={`/module/${mod.id}`} className="nav-item module-link">
+            <NavLink to={`/module/${mod.id}`} className="nav-item module-link" onClick={onClose}>
               <span>{i + 1}. {mod.title}</span>
               <span className="progress-badge">{getModuleProgress(mod.id)}%</span>
             </NavLink>
@@ -65,7 +74,7 @@ export function Sidebar({ onRandomQuestion }: SidebarProps) {
           <span className="nav-section-title">Assessment</span>
         </div>
 
-        <NavLink to="/final-test" className="nav-item">
+        <NavLink to="/final-test" className="nav-item" onClick={onClose}>
           🏆 Final Test
           {progress.finalTestResult && (
             <span className="badge">{progress.finalTestResult.score}/{progress.finalTestResult.total}</span>
