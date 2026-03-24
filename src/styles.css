@@ -965,3 +965,14 @@ hr {
   display: flex;
   justify-content: center;
 }
+
+.rq-module-link {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.rq-streak-end,
+.ql-streak-end {
+  text-align: center;
+}

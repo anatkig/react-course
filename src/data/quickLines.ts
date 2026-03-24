@@ -10,6 +10,8 @@ export interface QuickLineChallenge {
   answer: string;
   /** Hint shown on request */
   hint: string;
+  /** ID of the related course module */
+  moduleId: string;
 }
 
 export const quickLineChallenges: QuickLineChallenge[] = [
@@ -24,6 +26,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'function UserInfo({ name, age }) {',
     hint: 'Destructure props directly in the parameter list: { prop1, prop2 }',
+    moduleId: 'mod-1',
   },
   {
     id: 'ql-2',
@@ -40,6 +43,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '{items.map(item => <li key={item.id}>{item.name}</li>)}',
     hint: 'Use items.map() and don\'t forget the key prop.',
+    moduleId: 'mod-1',
   },
   {
     id: 'ql-3',
@@ -53,6 +57,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const [count, setCount] = useState(0);',
     hint: 'Use array destructuring with useState(initialValue).',
+    moduleId: 'mod-1',
   },
   {
     id: 'ql-4',
@@ -64,6 +69,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     codeAfter: [],
     answer: '}, [userId]);',
     hint: 'The dependency array comes after the callback, inside useEffect().',
+    moduleId: 'mod-1',
   },
   {
     id: 'ql-5',
@@ -81,6 +87,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '{user.isAdmin && <AdminPanel />}',
     hint: 'Use the logical AND (&&) pattern for conditional rendering.',
+    moduleId: 'mod-1',
   },
   // --- Hooks ---
   {
@@ -95,6 +102,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const inputRef = useRef(null);',
     hint: 'useRef(null) creates a mutable ref object with a .current property.',
+    moduleId: 'mod-4',
   },
   {
     id: 'ql-7',
@@ -108,6 +116,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const filtered = useMemo(() => items.filter(i => i.name.includes(query)), [items, query]);',
     hint: 'useMemo(() => computation, [deps]) caches the result.',
+    moduleId: 'mod-4',
   },
   {
     id: 'ql-8',
@@ -121,6 +130,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const handleClick = useCallback(() => console.log(count), [count]);',
     hint: 'useCallback(fn, [deps]) memoizes the function reference.',
+    moduleId: 'mod-4',
   },
   // --- State Patterns ---
   {
@@ -134,6 +144,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setCount(prev => prev + 1);',
     hint: 'Pass a function to setState: setState(previousValue => newValue).',
+    moduleId: 'mod-2',
   },
   {
     id: 'ql-10',
@@ -146,6 +157,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setItems(prev => [...prev, item]);',
     hint: 'Use spread operator: [...existingArray, newItem].',
+    moduleId: 'mod-2',
   },
   {
     id: 'ql-11',
@@ -158,6 +170,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setItems(prev => prev.filter(item => item.id !== id));',
     hint: 'filter() returns a new array without the matching item.',
+    moduleId: 'mod-2',
   },
   {
     id: 'ql-12',
@@ -170,6 +183,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setUser(prev => ({ ...prev, name: newName }));',
     hint: 'Spread the previous object and override the property: { ...prev, key: value }.',
+    moduleId: 'mod-2',
   },
   // --- JSX & Components ---
   {
@@ -187,6 +201,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '{isAuth ? <LoggedIn /> : <LoggedOut />}',
     hint: 'Ternary in JSX: {condition ? <A /> : <B />}.',
+    moduleId: 'mod-1',
   },
   {
     id: 'ql-14',
@@ -204,6 +219,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '<input {...rest} />',
     hint: 'Use the spread operator on JSX: <element {...objectOfProps} />.',
+    moduleId: 'mod-1',
   },
   // --- useEffect patterns ---
   {
@@ -218,6 +234,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'return () => clearInterval(id);',
     hint: 'Return a function from useEffect for cleanup.',
+    moduleId: 'mod-3',
   },
   {
     id: 'ql-16',
@@ -231,6 +248,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'return () => window.removeEventListener("resize", handleResize);',
     hint: 'Clean up by removing the same event listener in the return function.',
+    moduleId: 'mod-3',
   },
   // --- TypeScript ---
   {
@@ -246,6 +264,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const [user, setUser] = useState<User | null>(null);',
     hint: 'Provide the generic type: useState<Type>(initialValue).',
+    moduleId: 'mod-13',
   },
   {
     id: 'ql-18',
@@ -259,6 +278,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'onClick: () => void;',
     hint: 'A function that takes no args and returns nothing: () => void.',
+    moduleId: 'mod-13',
   },
   // --- Context ---
   {
@@ -273,6 +293,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const theme = useContext(ThemeContext);',
     hint: 'useContext(ContextObject) returns the current context value.',
+    moduleId: 'mod-4',
   },
   // --- Array methods ---
   {
@@ -286,6 +307,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'return [...items].sort((a, b) => a.name.localeCompare(b.name));',
     hint: 'Copy first with [...arr] since sort() mutates in place.',
+    moduleId: 'mod-1',
   },
   // --- Event handling ---
   {
@@ -300,6 +322,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'e.preventDefault();',
     hint: 'Call preventDefault() on the event object.',
+    moduleId: 'mod-2',
   },
   // --- Routing ---
   {
@@ -314,6 +337,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const { id } = useParams();',
     hint: 'useParams() returns an object of URL parameters.',
+    moduleId: 'mod-5',
   },
   {
     id: 'ql-23',
@@ -330,6 +354,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'navigate("/dashboard");',
     hint: 'Call the navigate function with the target path.',
+    moduleId: 'mod-5',
   },
   // --- Misc patterns ---
   {
@@ -344,6 +369,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const Settings = lazy(() => import("./Settings"));',
     hint: 'lazy() takes a function that returns a dynamic import().',
+    moduleId: 'mod-8',
   },
   {
     id: 'ql-25',
@@ -355,6 +381,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '<Suspense fallback={<p>Loading...</p>}>',
     hint: 'Suspense takes a fallback prop with JSX to show while loading.',
+    moduleId: 'mod-8',
   },
   {
     id: 'ql-26',
@@ -369,6 +396,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'createPortal(children, document.body)',
     hint: 'createPortal(element, container) from "react-dom".',
+    moduleId: 'mod-10',
   },
   {
     id: 'ql-27',
@@ -382,6 +410,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'useEffect(() => { document.title = title; }, [title]);',
     hint: 'Use useEffect with title as a dependency.',
+    moduleId: 'mod-3',
   },
   {
     id: 'ql-28',
@@ -395,6 +424,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'return () => clearTimeout(timer);',
     hint: 'Return a cleanup function that calls clearTimeout.',
+    moduleId: 'mod-3',
   },
   {
     id: 'ql-29',
@@ -407,6 +437,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'e => e.stopPropagation()',
     hint: 'Call stopPropagation() on the event to prevent bubbling.',
+    moduleId: 'mod-2',
   },
   {
     id: 'ql-30',
@@ -420,6 +451,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const total = items.reduce((sum, item) => sum + item.price, 0);',
     hint: 'Use reduce() to sum up values. Don\'t store derived data in state.',
+    moduleId: 'mod-2',
   },
   // --- Module 9: Security ---
   {
@@ -435,6 +467,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const clean = DOMPurify.sanitize(userInput);',
     hint: 'Use DOMPurify.sanitize() to strip malicious scripts from HTML content.',
+    moduleId: 'mod-9',
   },
   {
     id: 'ql-32',
@@ -450,6 +483,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'headers: { Authorization: `Bearer ${token}` },',
     hint: 'Set headers with the Authorization key and `Bearer ${token}` value.',
+    moduleId: 'mod-9',
   },
   // --- Module 10: React Tricks ---
   {
@@ -465,6 +499,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '<UserProfile key={userId} userId={userId} />',
     hint: 'Changing the key prop forces React to unmount and remount with fresh state.',
+    moduleId: 'mod-10',
   },
   {
     id: 'ql-34',
@@ -479,6 +514,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '<input ref={ref} {...props} />',
     hint: 'Pass the ref received from forwardRef directly to the inner DOM element.',
+    moduleId: 'mod-10',
   },
   // --- Module 11: React Traps ---
   {
@@ -495,6 +531,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setCount(prev => prev + 1);',
     hint: 'Use a function updater to get the latest value instead of a stale closure reference.',
+    moduleId: 'mod-11',
   },
   {
     id: 'ql-36',
@@ -507,6 +544,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setUser(prev => ({ ...prev, address: { ...prev.address, city: newCity } }));',
     hint: 'Spread each level of nesting: { ...prev, nested: { ...prev.nested, key: value } }.',
+    moduleId: 'mod-11',
   },
   // --- Module 12: Custom Hooks ---
   {
@@ -525,6 +563,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'return debounced;',
     hint: 'A custom hook returns its computed value at the end.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-38',
@@ -539,6 +578,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const [value, setValue] = useState(() => JSON.parse(localStorage.getItem(key)) ?? initial);',
     hint: 'Use a lazy initializer to read from localStorage and fall back to the initial value.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-39',
@@ -553,6 +593,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'return () => controller.abort();',
     hint: 'Return a cleanup function that calls controller.abort() to cancel the pending request.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-40',
@@ -566,6 +607,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'if (!ref.current || ref.current.contains(event.target)) return;',
     hint: 'Use ref.current.contains(event.target) to check if click was inside.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-41',
@@ -582,6 +624,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'ref.current = value;',
     hint: 'Assign value to ref.current inside useEffect — it runs after render, so the ref holds the previous value during the next render.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-42',
@@ -592,6 +635,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     codeAfter: [],
     answer: 'const toggle = useCallback((next) => setValue(curr => typeof next === "boolean" ? next : !curr), []);',
     hint: 'Check if the argument is a boolean — if so use it directly, otherwise flip the current value.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-43',
@@ -608,6 +652,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const id = setInterval(() => savedCallback.current(), delay);',
     hint: 'Call savedCallback.current() inside setInterval to always use the freshest callback.',
+    moduleId: 'mod-12',
   },
   {
     id: 'ql-44',
@@ -623,6 +668,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const downHandler = (e) => { if (e.key === targetKey) setPressed(true); };',
     hint: 'Compare e.key to targetKey and call setPressed(true) on match.',
+    moduleId: 'mod-12',
   },
   // --- Module 13: TypeScript ---
   {
@@ -636,6 +682,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'children: React.ReactNode;',
     hint: 'React.ReactNode covers elements, strings, numbers, null, fragments, and more.',
+    moduleId: 'mod-13',
   },
   {
     id: 'ql-46',
@@ -647,6 +694,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'function List<T>({ items, renderItem }: { items: T[]; renderItem: (item: T) => React.ReactNode }) {',
     hint: 'Use function Name<T>({ prop }: { prop: T[] }) { for a generic component.',
+    moduleId: 'mod-13',
   },
   // --- Module 14: Forms ---
   {
@@ -660,6 +708,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));',
     hint: 'Use [e.target.name] as a computed key to update the right field.',
+    moduleId: 'mod-14',
   },
   {
     id: 'ql-48',
@@ -672,6 +721,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setFields(prev => [...prev, ""]);',
     hint: 'Spread the existing array and append a new empty string.',
+    moduleId: 'mod-14',
   },
   // --- Module 15: API Integration ---
   {
@@ -687,6 +737,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const controller = new AbortController();',
     hint: 'new AbortController() creates a controller whose signal can cancel fetch requests.',
+    moduleId: 'mod-15',
   },
   {
     id: 'ql-50',
@@ -702,6 +753,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'setPosts(posts.map(p => p.id === postId ? { ...p, liked: !p.liked } : p));',
     hint: 'Update the target item optimistically with map(), save previous state for rollback.',
+    moduleId: 'mod-15',
   },
   // --- Module 16: Testing ---
   {
@@ -715,6 +767,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'const button = screen.getByRole("button", { name: /submit/i });',
     hint: 'getByRole("button", { name: /text/i }) finds a button by its accessible name.',
+    moduleId: 'mod-16',
   },
   {
     id: 'ql-52',
@@ -728,6 +781,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'await userEvent.click(button);',
     hint: 'userEvent.click(element) simulates a real user click interaction.',
+    moduleId: 'mod-16',
   },
   // --- Module 17: Accessibility ---
   {
@@ -743,6 +797,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '<button onClick={onClose} aria-label="Close">✕</button>',
     hint: 'aria-label provides an accessible name when there is no visible label text.',
+    moduleId: 'mod-17',
   },
   {
     id: 'ql-54',
@@ -753,6 +808,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '<label htmlFor="email">Email</label>',
     hint: 'Set htmlFor on the label to match the input\'s id attribute.',
+    moduleId: 'mod-17',
   },
   // --- Module 18: Ecosystem & Tooling ---
   {
@@ -767,6 +823,7 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: 'base: "/my-app/",',
     hint: 'Set the base property in vite.config to match your GitHub Pages repository name.',
+    moduleId: 'mod-18',
   },
   {
     id: 'ql-56',
@@ -781,5 +838,6 @@ export const quickLineChallenges: QuickLineChallenge[] = [
     ],
     answer: '"no-console": "warn",',
     hint: 'Use the "no-console" rule with "warn" severity level.',
+    moduleId: 'mod-18',
   },
 ];

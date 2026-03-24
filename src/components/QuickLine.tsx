@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { quickLineChallenges, type QuickLineChallenge } from '../data/quickLines';
+import { course } from '../data';
 import { useProgress } from '../context/ProgressContext';
 
 function pickRandom(): QuickLineChallenge {
@@ -12,6 +14,7 @@ interface Props {
 
 export function QuickLine({ onClose }: Props) {
   const { dispatch } = useProgress();
+  const navigate = useNavigate();
   const [challenge, setChallenge] = useState<QuickLineChallenge>(pickRandom);
   const [answer, setAnswer] = useState('');
   const [result, setResult] = useState<'correct' | 'incorrect' | null>(null);
@@ -110,18 +113,26 @@ export function QuickLine({ onClose }: Props) {
           </>
         )}
 
-        {showStreakEnd && (
-          <div className="ql-streak-end">
-            <p>❌ Not quite. The correct line was:</p>
-            <div className="ql-answer-reveal">
-              <code>{challenge.answer}</code>
+        {showStreakEnd && (() => {
+          const mod = course.modules.find(m => m.id === challenge.moduleId);
+          return (
+            <div className="ql-streak-end">
+              <p>❌ Not quite. The correct line was:</p>
+              <div className="ql-answer-reveal">
+                <code>{challenge.answer}</code>
+              </div>
+              <p className="ql-streak-msg">That was <strong>{endedStreak}</strong> correct answer{endedStreak !== 1 ? 's' : ''} in a row. Keep going!</p>
+              {mod && (
+                <button className="btn btn-secondary rq-module-link" onClick={() => { onClose(); navigate(`/module/${mod.id}`); }}>
+                  📖 Review: {mod.title}
+                </button>
+              )}
+              <button className="btn btn-primary" onClick={next}>
+                Continue →
+              </button>
             </div>
-            <p className="ql-streak-msg">That was <strong>{endedStreak}</strong> correct answer{endedStreak !== 1 ? 's' : ''} in a row. Keep going!</p>
-            <button className="btn btn-primary" onClick={next}>
-              Continue →
-            </button>
-          </div>
-        )}
+          );
+        })()}
       </div>
     </div>
   );
